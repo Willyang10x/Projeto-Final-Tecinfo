@@ -1,0 +1,108 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+    background-color: #C8D7FF;
+    
+}
+
+header {
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.logo img{
+    height: 60px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: top 10px;
+}
+
+#nav-links li {
+    margin: 0 20px;
+}
+
+#nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.barra-de-pesquisa{
+    display: flex;
+    align-items: center;
+}
+
+.barra-de-pesquisa input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.barra-de-pesquisa button {
+    padding: 0.5rem;
+    border: none;
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+    color: #ffffff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 800px;
+    margin:50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.produto img {
+    max-width: 300px;  
+    border-radius: 8px; 
+    border: 3px solid rgb(117, 1, 250);         
+}
+
+#botao-de-compra {
+    color: white;
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
+}   
+
+.separetor {
+    border: solid 2px rgb(117, 1, 250);
+    max-width: 1000px;
+    margin: auto;
+}
+
+#detalhes{
+    margin: 30px auto;
+    max-width: 500px;
+    padding: 20px;
+    border: solid 2px rgb(117, 1, 250);
+    border-radius: 20px;
+}
+
