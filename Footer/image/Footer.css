@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    color: #333;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
+    border-radius: 15px 15px 0 0;
+    color: #fff;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer-logo, .footer-nav, .footer-info, .footer-subscribe, .footer-social {
+    flex: 1 1 200px;
+    margin: 10px;
+}
+
+.footer-logo {
+    text-align: center;
+}
+
+.logo-img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.company-desc {
+    font-size: 14px;
+}
+
+.footer-nav .nav-list {
+    list-style: none;
+    text-align: center;
+}
+
+.footer-nav .nav-list li {
+    margin-bottom: 10px;
+}
+
+.footer-nav .nav-list a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-nav .nav-list a:hover {
+    color: #ffd700;
+}
+
+.footer-info p {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.footer-info a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+.footer-subscribe form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subscribe-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-subscribe input {
+    width: 80%;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #333;
+    margin-bottom: 10px;
+}
+
+.footer-subscribe button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #501c86;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.footer-subscribe button:hover {
+    background-color: #8722d4;
+}
+
+.footer-social {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-social p {
+    margin-bottom: 10px;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #ffd700;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo, .footer-nav, .footer-info, .footer-subscribe, .footer-social {
+        flex: 1 1 100%;
+    }
+}
