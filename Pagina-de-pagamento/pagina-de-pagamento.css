@@ -1,0 +1,206 @@
+*{
+    overflow-y: hidde
+}
+
+body {
+    background-color: #C8D7FF;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+    padding: 10px 0;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 60px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: top 10px;
+}
+
+#nav-links li {
+    margin: 0 20px;
+}
+
+#nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.barra-de-pesquisa{
+    display: flex;
+    align-items: center;
+}
+
+.barra-de-pesquisa input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.barra-de-pesquisa button {
+        padding: 0.5rem;
+        border: none;
+        background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+        color: #ffffff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+}
+
+.container{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.botao-de-voltar{
+    height: 60px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.informacoes {
+    margin: 0 auto;
+    max-width: 800px; 
+}
+
+.barra-de-Nome input,
+.barra-de-Cidade input,
+.barra-de-endereço input,
+.barra-de-CPF input,
+.barra-de-Número input{
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.barra-de-Cidade-CPF{
+    display: flex;
+    align-items: flex-start; 
+    gap: 1rem; 
+}
+
+.barra-de-endereço-Número{
+    display: flex;
+    align-items: flex-start; 
+    gap: 1rem; 
+}
+
+.barra-de-endereço{
+    flex: 1;
+}
+.barra-de-Cidade {
+    flex: 1; 
+}
+
+.barra-de-CPF {
+    flex: 0 0 300px;
+}
+
+.barra-de-CPF h2 {
+    margin-top: -35px;
+    margin-bottom: 0.5rem;
+}
+
+.barra-de-Número{
+    flex: 0 0 300px;
+}
+
+.barra-de-Número h2{
+    margin-top: -35px;
+    margin-bottom: 0.5rem;
+}
+
+.forma-pagamento h2{
+    margin-top: 80px;
+}
+
+.botao-pagamento{
+    border: none;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.botao-pagamento:hover {
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+}
+
+.imagem-pagamento{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.container-botoes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.botao-somar {
+    margin-top: 100px;
+    background-color: #ffffff;
+    border: 3px solid rgb(117, 1, 250); 
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.botao-somar:hover {
+    background-color: #f0f0f0; 
+}
+
+
+.botao-cancelar,
+.botao-fazer-pg {
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
+.botao-cancelar {
+    margin-top: 100px;
+    background-color: #C8D7FF;
+    border-radius: 12px;
+    border-color:blueviolet;
+    color:blueviolet;
+}
+
+
+.botao-fazer-pg {
+    margin-top: 100px;
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+    color: white;
+    border-radius: 12px;
+    border-color:blueviolet;
+}
+
+.separetor {
+    border: solid 2px rgb(117, 1, 250);
+    max-width: 1000px;
+    margin: auto;
+}
