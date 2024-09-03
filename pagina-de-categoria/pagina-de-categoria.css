@@ -42,7 +42,7 @@ header {
 
 .products {
     align-content: space-between;
-    gap: 50px;
+    gap: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
