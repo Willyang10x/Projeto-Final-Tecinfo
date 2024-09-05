@@ -1,0 +1,57 @@
+@import url(../Header/header.css);
+@import url(../Footer/Footer.css);
+
+*{
+    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #C8D7FF;
+}
+
+.botao-voltar{
+    cursor: pointer;
+}
+
+.container{
+    text-align: center;
+
+}
+
+.paragrafo{
+    text-align: center;
+    max-width: 1000px;
+    margin: 85px auto 0px;
+}
+
+.botao-voltar-home a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+.botao-voltar-home {
+    padding: 10px 30px;
+    font-size: 16px;
+    margin-top: 100px;
+    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
+    color: white;
+    border-radius: 12px;
+    border: none;
+    margin-left: 82%;
+}
+
+.botao-voltar-home:hover{
+    background: rgb(30, 0, 70);
+    
+}
+
+.separetor {
+    border: solid 2px rgb(117, 1, 250);
+    max-width: 1000px;
+    margin: auto;
+}
