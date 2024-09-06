@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Header/imagem/logo-img.png" type="image/x-icon">
+    <link rel="stylesheet" href="contatos.css">
+
+    <title>Contatos</title>
+</head>
+
+<body>
+
+    <div id="back">
+        <a id="button-back" onclick= "window.history.go(-1)">
+            <img src="../pagina-de-compra/image/button-back.png" alt="Voltar a pagina anterior">
+        </a>
+
+        <div class="separetor"></div>
+    </div>
+
+    <div class="container">
+        <h1>Contato</h1>
+        
+        <div class="contact-info">
+            <div>
+                <h3>Endereço</h3>
+                <p>Rua Exemplo, 123<br>Cidade, Estado<br>CEP: 12345-678</p>
+            </div>
+            <div>
+                <h3>Telefone</h3>
+                <p>(11) 1234-5678</p>
+            </div>
+            <div>
+                <h3>E-mail</h3>
+                <p>contato@empresa.com</p>
+            </div>
+        </div>
+        
+        
+        <form id="form-contato" action="/enviar-mensagem" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
