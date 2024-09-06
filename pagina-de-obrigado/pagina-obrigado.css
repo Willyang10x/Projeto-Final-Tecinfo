@@ -1,0 +1,74 @@
+
+
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #C8D7FF;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.obrigado-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+h1 {
+    color: #4B0082;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.pedido-detalhes {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.pedido-detalhes h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.pedido-detalhes p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4B0082;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+a:hover {
+    background-color: #800080;
+}

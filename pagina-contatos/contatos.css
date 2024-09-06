@@ -1,15 +1,9 @@
 
-
-*{
-   margin: 0; 
-   padding: 0;
-   box-sizing: border-box;
-   font-family: Arial, sans-serif;
-}
+@import url(../Footer/Footer.css);
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    background-color: #C8D7FF;
     color: #333;
     margin: 0;
     padding: 0;
@@ -26,7 +20,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -34,15 +28,35 @@ body {
 h1 {
     text-align: center;
     color: #4B0082;
-    margin-bottom: 20px;
 }
 
-.form-section {
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.contact-info div {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    text-align: center;
+    width: 30%;
+}
+
+.contact-info div h3 {
+    margin-bottom: 15px;
+    color: #4B0082;
+}
+
+#form-contato {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -51,32 +65,12 @@ label {
     margin: 10px 0 5px;
 }
 
-input, select {
+input, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
-}
-
-.payment-methods {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 15px;
-}
-
-.payment-methods input {
-    margin-right: 5px;
-}
-
-.total {
-    text-align: center;
-    background-color: #4B0082;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 20px;
-    margin-bottom: 20px;
 }
 
 button {
@@ -86,19 +80,8 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
 }
 
 button:hover {
     background-color: #800080;
-}
-
-.address-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.address-group input {
-    width: 100%;
 }

@@ -12,11 +12,3 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
 });
-
-let elementoDetalhes = document.querySelectorAll('.sobre');
-
-elementoDetalhes.forEach(function (sobre) {
-    sobre.addEventListener('click', function() {
-        sobre.classList.toggle('active')
-    })
-});

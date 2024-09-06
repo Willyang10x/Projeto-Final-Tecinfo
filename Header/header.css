@@ -1,11 +1,14 @@
 *{
     margin: 0;
+    padding: 0;
+    
 }
 
 header {
     background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
-    padding: 10px 0;
-    justify-content: space-between;
+    padding: 5px 0;
+    justify-content: space-evenly;
+    gap: 300px;
     display: flex;
 }
 

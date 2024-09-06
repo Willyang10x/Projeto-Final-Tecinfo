@@ -1,62 +1,40 @@
-body {
-    background-color: #C8D7FF;
-    font-family: Arial, sans-serif;
+@import url(../Header/header.css);
+@import url(../Footer/Footer.css);
+
+*{
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
     box-sizing: border-box;
 }
 
-header {
-    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
-    padding: 10px 0;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-}
-
-.seta img{
-    height: 50px;
-    text-align: left;
-    padding-left: 20px;
-}
-
-.barra-de-pesquisa{
-    display: flex;
-    align-items: center;
-}
-
-.barra-de-pesquisa input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px 0 0 5px;
-}
-
-.barra-de-pesquisa button {
-    padding: 0.5rem;
-    border: none;
-    background: linear-gradient(90deg,rgba(80, 12, 134, 1) 0%,rgba(133, 34, 212, 1) 100%);
-    color: #ffffff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
+body {
+    background-color: #C8D7FF;
 }
 
 .products {
     align-content: space-between;
-    gap: 50px;
+    gap: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.products h2 {
-    margin-top: 100px;
+#titulo h2 {
     text-align: center;
     width: 100%;
-    color: #050505;
+    color: #6700a3;
+    font-weight: bolder;
+}
+
+.separetor {
+    border: solid 2px rgb(117, 1, 250);
+    max-width: 1000px;
+    margin: auto;
 }
 
 .product {
-    margin-top: 30px;
+    margin-top: 25px;
     background-color: #C8D7FF;
     border: 2px solid #800080;
     border-radius: 10px;
@@ -87,129 +65,4 @@ header {
 .product button:hover {
     background-color: #4B0082;
     color: #C8D7FF;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    background: linear-gradient(90deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
-    border-radius: 15px 15px 0 0;
-    color: #fff;
-    margin: auto;
-    padding: 20px;
-}
-
-.footer-logo, .footer-nav, .footer-info, .footer-subscribe, .footer-social {
-    flex: 1 1 200px;
-    margin: 10px;
-}
-
-.footer-logo {
-    text-align: center;
-}
-
-.logo-img {
-    max-width: 100px;
-    margin-bottom: 10px;
-}
-
-.company-desc {
-    font-size: 14px;
-}
-
-.footer-nav .nav-list {
-    list-style: none;
-    text-align: center;
-}
-
-.footer-nav .nav-list li {
-    margin-bottom: 10px;
-}
-
-.footer-nav .nav-list a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.footer-nav .nav-list a:hover {
-    color: #ffd700;
-}
-
-.footer-info p {
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.footer-info a {
-    color: #ffd700;
-    text-decoration: none;
-}
-
-.footer-subscribe form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.subscribe-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.footer-subscribe input {
-    width: 80%;
-    max-width: 300px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #333;
-    margin-bottom: 10px;
-}
-
-.footer-subscribe button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: #501c86;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.footer-subscribe button:hover {
-    background-color: #8722d4;
-}
-
-.footer-social {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.footer-social p {
-    margin-bottom: 10px;
-}
-
-.footer-social a {
-    margin: 0 10px;
-    color: #fff;
-    font-size: 24px;
-    transition: color 0.3s;
-}
-
-.footer-social a:hover {
-    color: #ffd700;
-}
-
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-logo, .footer-nav, .footer-info, .footer-subscribe, .footer-social {
-        flex: 1 1 100%;
-    }
 }
