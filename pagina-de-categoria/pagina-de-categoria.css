@@ -12,6 +12,16 @@ body {
     background-color: #C8D7FF;
 }
 
+#button-back{
+    height: 60px;
+    text-align: left;
+    padding-left: 20px;
+    
+    img{
+        cursor: pointer;
+    }
+}
+
 .products {
     align-content: space-between;
     gap: 40px;
