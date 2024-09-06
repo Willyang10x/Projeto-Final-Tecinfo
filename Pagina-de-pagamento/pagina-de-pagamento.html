@@ -16,7 +16,7 @@
     <div class="container">
         <h1>Página de Pagamento</h1>
         
-        <!-- Seção de Dados do Cliente -->
+        <!-- Dados do Cliente -->
         <div class="form-section">
             <h2>Dados do Cliente</h2>
             <label for="name">Nome Completo:</label>
@@ -62,7 +62,7 @@
             </div>
         </div>
         
-        <!-- Seção de Forma de Pagamento -->
+        <!-- Forma de Pagamento -->
         <div class="form-section">
             <h2>Forma de Pagamento</h2>
             <div class="payment-methods">
@@ -71,7 +71,7 @@
                 <label><input type="radio" name="payment-method" value="boleto" required> Boleto Bancário</label>
             </div>
 
-            <!-- Campos adicionais para Cartão de Crédito -->
+            <!-- Cartão de Crédito -->
             <div id="credit-card-info" style="display: none;">
                 <label for="card-number">Número do Cartão:</label>
                 <input type="text" id="card-number" name="card-number">
@@ -86,11 +86,13 @@
         
         <!-- Total do Pedido -->
         <div class="total">
-            Total do Pedido: R$ 150,00
+            Total do Pedido: R$ 23,00
         </div>
         
         <!-- Botão de Finalizar Pedido -->
-        <button type="submit">Finalizar Pedido</button>
+        <a href="../pagina-de-obrigado/pagina-de-obrigado.html">
+            <button type="submit">Finalizar Pedido</button>
+        </a>
     </div>
 
     <script src="app.js"></script>
