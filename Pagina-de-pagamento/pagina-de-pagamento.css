@@ -1,4 +1,4 @@
-@import url(../Footer/Footer.css);
+
 
 *{
    margin: 0; 
@@ -9,10 +9,20 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f0f8ff;
     color: #333;
     margin: 0;
     padding: 0;
+}
+
+#button-back{
+    height: 60px;
+    text-align: left;
+    padding-left: 20px;
+    
+    img{
+        cursor: pointer;
+    }
 }
 
 .container {
@@ -24,6 +34,7 @@ body {
 h1 {
     text-align: center;
     color: #4B0082;
+    margin-bottom: 20px;
 }
 
 .form-section {
