@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <body>
     <div id="back">
         <a id="button-back" onclick= "window.history.go(-1)">
-            <img src="../pagina-de-compra/image/button-back.png" alt="Voltar a pagina anterior">
+            <img src="/assets/icons/button-back.png" alt="Voltar a pagina anterior">
         </a>
     </div>
     <div class="container">
@@ -30,16 +30,25 @@
 
             <!-- Endereço do Cliente -->
             <h2>Endereço de Entrega</h2>
-            <label for="cep">CEP:</label>
-            <input type="text" id="cep" name="cep" required>
+            <div class="address-group">
+                <div>
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required>
+                </div>
+                <div>
+                    <label for="number">Número:</label>
+                    <input type="text" id="number" name="number" required>
+                </div>
+            </div>
             
             <label for="street">Rua:</label>
             <input type="text" id="street" name="street" required>
             
             <div class="address-group">
+                
                 <div>
-                    <label for="number">Número:</label>
-                    <input type="text" id="number" name="number" required>
+                    <label for="city">Cidade:</label>
+                    <input type="text" id="city" name="city" required>
                 </div>
                 <div>
                     <label for="complement">Complemento:</label>
@@ -51,14 +60,7 @@
             <input type="text" id="neighborhood" name="neighborhood" required>
 
             <div class="address-group">
-                <div>
-                    <label for="city">Cidade:</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div>
-                    <label for="state">Estado:</label>
-                    <input type="text" id="state" name="state" required>
-                </div>
+               
             </div>
         </div>
         
@@ -67,12 +69,19 @@
             <h2>Forma de Pagamento</h2>
             <div class="payment-methods">
                 <label><input type="radio" name="payment-method" value="pix" required> PIX</label>
-                <label><input type="radio" name="payment-method" value="cartao" required> Cartão de Crédito</label>
-                <label><input type="radio" name="payment-method" value="boleto" required> Boleto Bancário</label>
+                <label><input type="radio" name="payment-method" value="cartao" required> Cartão de Crédito ou Débito</label>
             </div>
 
-            <!-- Cartão de Crédito -->
+            <!-- pix qrcode-->
+            <div id="qr-code">
+                <h3>Escaneie o QR Code para pagar com PIX</h3>
+                <img id="qr-img" src="" alt="QR Code para pagamento PIX">
+            </div>
+            <!-- Cartão de Crédito/debito -->
             <div id="credit-card-info" style="display: none;">
+                <label for="card-nome">Nome do títular:</label>
+                <input type="text" id="card-name" name="card-name">
+
                 <label for="card-number">Número do Cartão:</label>
                 <input type="text" id="card-number" name="card-number">
                 
