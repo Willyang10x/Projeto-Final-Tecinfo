@@ -10,7 +10,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    color: #333;
+    color: #333333;
     margin: 0;
     padding: 0;
 }
@@ -101,4 +101,19 @@ button:hover {
 
 .address-group input {
     width: 100%;
+}
+
+#number,#cep,#complement,#city{
+    margin-right: 170px;
+}
+
+#qr-code {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#qr-img {
+    width:250px;
+    height: 250px;
 }
