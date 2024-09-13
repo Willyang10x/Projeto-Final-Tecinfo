@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#button-back{
+    height: 60px;
+    text-align: left;
+    padding-left: 20px;
+    
+    img{
+        cursor: pointer;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #4B0082;
+}
+
+.order-list {
+    margin-top: 20px;
+}
+
+.order {
+    background-color: #C8D7FF;
+    border: 2px solid #800080;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 20px;
+}
+
+.order h2 {
+    margin-top: 0;
+}
+
+.order p {
+    margin: 5px 0;
+}
+
+.order a {
+    text-decoration: none;
+    color: #4B0082;
+    font-weight: bold;
+}
+
+.status-pendente {
+    color: red;
+}
+
+.status-entregue {
+    color: green;
+}
+
+.status-em-processamento {
+    color: orange;
+}
+
+#back {
+    padding: 10px;
+}
+
+#button-back img {
+    width: 30px;
+}

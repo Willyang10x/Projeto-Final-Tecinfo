@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="Style.css">
+    <title>Histórico de Compras</title>
+</head>
+<body>
+    <div id="back">
+        <a id="button-back" onclick="window.history.go(-1)">
+            <img src="/assets/icons/button-back.png" alt="Voltar a página anterior">
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Histórico de Compras</h1>
+        
+        <!-- Lista de Pedidos -->
+        <div class="order-list">
+            <div class="order">
+                <h2>Pedido #12345</h2>
+                <p>Data: 01/09/2024</p>
+                <p>Total: R$ 150,00</p>
+                <p>Status: <span class="status-pendente">Pendente</span></p>
+                <a href="#">Ver detalhes</a>
+            </div>
+
+            <div class="order">
+                <h2>Pedido #12344</h2>
+                <p>Data: 28/08/2024</p>
+                <p>Total: R$ 200,00</p>
+                <p>Status: <span class="status-entregue">Entregue</span></p>
+                <a href="#">Ver detalhes</a>
+            </div>
+
+            <div class="order">
+                <h2>Pedido #12343</h2>
+                <p>Data: 20/08/2024</p>
+                <p>Total: R$ 300,00</p>
+                <p>Status: <span class="status-em-processamento">Em Processamento</span></p>
+                <a href="#">Ver detalhes</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="historico-de-compras.js"></script>
+</body>
+</html>
