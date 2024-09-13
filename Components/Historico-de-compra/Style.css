@@ -1,13 +1,17 @@
+@import url(/Components/Header/header.css);
+@import url(/Components/Footer/Footer.css);
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
     color: #333;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -25,6 +29,22 @@ body {
 h1 {
     text-align: center;
     color: #4B0082;
+    font-size: 2em;
+}
+
+.filter-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-section select {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #800080;
+    border-radius: 5px;
+    background-color: #C8D7FF;
+    color: #333;
 }
 
 .order-list {
@@ -32,19 +52,26 @@ h1 {
 }
 
 .order {
-    background-color: #C8D7FF;
-    border: 2px solid #800080;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 10px;
     margin: 10px 0;
     padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.order:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .order h2 {
-    margin-top: 0;
+    font-size: 1.5em;
+    color: #4B0082;
 }
 
 .order p {
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 .order a {
@@ -63,6 +90,26 @@ h1 {
 
 .status-em-processamento {
     color: orange;
+}
+
+.load-more {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.load-more button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4B0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more button:hover {
+    background-color: #800080;
 }
 
 #back {
