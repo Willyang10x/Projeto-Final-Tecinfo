@@ -1,4 +1,5 @@
-
+@import url(../Footer/Footer.css);
+@import url(../Header/header.css);
 
 *{
    margin: 0; 
