@@ -1,4 +1,5 @@
-
+@import url(../Header/header.css);
+@import url(../Footer/Footer.css);
 
 *{
    margin: 0; 
@@ -8,11 +9,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f0f8ff;
     color: #333333;
-    margin: 0;
-    padding: 0;
 }
 
 #button-back{

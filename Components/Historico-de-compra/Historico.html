@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="Style.css">
+    <title>Histórico de Compras</title>
+</head>
+
+<body>
+
+    <header id="header-placeholder"></header>
+
+    <div id="back">
+        <a id="button-back" onclick="window.history.go(-1)">
+            <img src="/assets/icons/button-back.png" alt="Voltar a página anterior">
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Histórico de Compras</h1>
+        
+        <!-- Filtro de Status -->
+        <div class="filter-section">
+            <label for="filter-status">Filtrar por Status:</label>
+            <select id="filter-status">
+                <option value="todos">Todos</option>
+                <option value="pendente">Pendente</option>
+                <option value="entregue">Entregue</option>
+            </select>
+        </div>
+
+        <!-- Lista de Pedidos -->
+        <div id="order-list" class="order-list">
+            <!-- Pedidos serão carregados aqui dinamicamente -->
+        </div>
+
+        <!-- Botão Carregar Mais -->
+        <div class="load-more">
+            <button id="load-more-btn">Carregar Mais</button>
+        </div>
+    </div>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

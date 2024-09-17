@@ -1,4 +1,19 @@
 
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('../Header/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        });
+
+    fetch('../Footer/Footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+
+});
+
 // Exibir/esconder os campos do cartão de crédito e pix conforme a escolha da forma de pagamento
 document.querySelectorAll('input[name="payment-method"]').forEach((input) => {
     input.addEventListener('change', function() {
