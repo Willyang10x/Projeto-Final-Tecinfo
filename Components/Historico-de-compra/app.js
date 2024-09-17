@@ -1,12 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/Components/Header/header.html')
+    fetch('../Header/header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
         });
 
-    fetch('/Components/Footer/Footer.html')
+    fetch('../Footer/Footer.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pedidos = [
         { numero: '12345', data: '01/09/2024', total: '150,00', status: 'pendente' },
         { numero: '12344', data: '28/08/2024', total: '200,00', status: 'entregue' },
-        { numero: '12343', data: '20/08/2024', total: '300,00', status: 'em-processamento' },
+        { numero: '12343', data: '20/08/2024', total: '300,00', status: 'pendente' },
         { numero: '12342', data: '15/08/2024', total: '400,00', status: 'pendente' },
         { numero: '12341', data: '10/08/2024', total: '500,00', status: 'entregue' }
     ];
