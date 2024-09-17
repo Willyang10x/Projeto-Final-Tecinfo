@@ -38,6 +38,11 @@ h1 {
     margin-bottom: 20px;
 }
 
+.filter-section label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
 .filter-section select {
     padding: 10px;
     font-size: 1em;
@@ -114,8 +119,4 @@ h1 {
 
 #back {
     padding: 10px;
-}
-
-#button-back img {
-    width: 30px;
 }
