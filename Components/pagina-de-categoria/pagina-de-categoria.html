@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x.icon" href="images/imagem_2024-06-13_115000299-removebg-preview.png"> 
+    <link rel="icon" type="image/x-icon" href="images/imagem_2024-06-13_115000299-removebg-preview.png"> 
     <link rel="stylesheet" href="pagina-de-categoria.css">
+    <link rel="stylesheet" href="/Components/pagina-de-categoria/header.css">
     <title>PROJETO - FINAL</title>
 </head>
 
@@ -14,66 +15,24 @@
     <header id="header-placeholder"></header>
     
     <div id="back">
-        <a id="button-back" onclick= "window.history.go(-1)">
-            <img src="/assets/icons/button-back.png" alt="Voltar a pagina anterior">
+        <a id="button-back" onclick="window.history.go(-1)">
+            <img src="/assets/icons/button-back.png" alt="Voltar a página anterior">
         </a>
     </div>
     
     <div id="titulo">
         <div class="separetor"></div>
-        <h2>Mais Quentes</h2>
+        <h2>Produtos</h2>
         <div class="separetor"></div>
     </div>
+
     <section class="products">
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <button>Conferir</button>
-        </div>
-
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html"><button>Conferir</button></a>
-        </div>
-
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html"><button>Conferir</button></a>
-        </div>
-
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html"><button>Conferir</button></a>
-        </div>
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html"><button>Conferir</button></a>
-        </div>
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html"><button>Conferir</button></a>
-        </div>
-        <div class="product">
-            <img src="/assets/images/Rectangle 89 (1).png" alt="BigBurger">
-            <p>BigBurguer carne e queijo extra</p>
-            <p>R$23,99</p>
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html"><button>Conferir</button></a>
-        </div>
+        <div id="produtos"></div> <!-- Contêiner para produtos dinâmicos -->
     </section>
 
-        <footer id="footer-placeholder"></footer>
+    <footer id="footer-placeholder"></footer>
 
     <script src="app.js"></script>
+    
 </body>
 </html>
