@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footer-placeholder').innerHTML = data;
         });
 
-    const clienteId = 3; // Substitua pelo ID real do cliente
-    fetchPedidos(clienteId);
 });
 
+const clienteId = 3; // Substitua pelo ID real do cliente
+    fetchPedidos(clienteId);
 let allPedidos = []; // Armazenar todos os pedidos globalmente
 let currentPage = 1; // Controlar a página atual
 
