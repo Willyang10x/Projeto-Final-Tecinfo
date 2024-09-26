@@ -81,12 +81,6 @@ h1 {
     margin: 10px 0;
 }
 
-.order a {
-    text-decoration: none;
-    color: #4B0082;
-    font-weight: bold;
-}
-
 .order .lanche {
     background-color: #f9f9f9; /* Fundo diferente para itens de lanche */
     padding: 10px;
@@ -135,3 +129,58 @@ h1 {
 .lanche-info {
     color: #666; /* Cor mais clara para as informações do lanche */
 }
+
+.lanche {
+    display: flex; /* Exibir a imagem e informações lado a lado */
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.lanche-img {
+    width: 100px; /* Ajuste a largura da imagem do lanche */
+    height: auto; /* Manter a proporção da imagem */
+    border-radius: 5px; /* Borda arredondada para a imagem */
+    margin-right: 10px; /* Espaçamento entre a imagem e as informações */
+}
+
+.ver-mais-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4B0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ver-mais-btn:hover {
+    background-color: #800080;
+}
+
+.ver-menos-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4B0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ver-menos-btn:hover {
+    background-color: #800080;
+}
+
+.order-date {
+    font-size: 0.9rem; /* Tamanho menor */
+    color: #777; /* Cor mais clara para diferenciar */
+    margin-top: 0.5rem; /* Espaçamento acima da data */
+}
+
