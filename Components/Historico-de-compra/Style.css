@@ -16,20 +16,21 @@ body {
     padding: 20px;
 }
 
-#button-back{
+#button-back {
     height: 60px;
     text-align: left;
     padding-left: 20px;
-    
-    img{
-        cursor: pointer;
-    }
+}
+
+#button-back img {
+    cursor: pointer;
 }
 
 h1 {
     text-align: center;
     color: #4B0082;
-    font-size: 2em;
+    font-size: 2.5em; /* Aumentado para maior destaque */
+    margin-bottom: 20px;
 }
 
 .filter-section {
@@ -50,6 +51,7 @@ h1 {
     border-radius: 5px;
     background-color: #ffffff;
     color: #333;
+    margin-left: 10px; /* Adicionando espaçamento entre o label e o select */
 }
 
 .order-list {
@@ -85,16 +87,19 @@ h1 {
     font-weight: bold;
 }
 
+.order .lanche {
+    background-color: #f9f9f9; /* Fundo diferente para itens de lanche */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px; /* Espaçamento acima do item de lanche */
+}
+
 .status-pendente {
     color: red;
 }
 
 .status-entregue {
     color: green;
-}
-
-.status-em-processamento {
-    color: orange;
 }
 
 .load-more {
@@ -119,4 +124,14 @@ h1 {
 
 #back {
     padding: 10px;
+}
+
+/* Novos estilos para exibir os lanches associados ao pedido */
+.lanche-titulo {
+    font-weight: bold;
+    color: #333;
+}
+
+.lanche-info {
+    color: #666; /* Cor mais clara para as informações do lanche */
 }
