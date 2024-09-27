@@ -1,6 +1,6 @@
 async function fetchLanches() {
     try {
-        const response = await fetch('http://localhost:3000/lanches'); // Use a URL completa se necessário
+        const response = await fetch('http://localhost:3000/lanches'); // URL correta para seu backend
         if (!response.ok) {
             throw new Error('Erro ao buscar lanches: ' + response.statusText);
         }
@@ -28,16 +28,13 @@ async function fetchLanches() {
     }
 }
 
-// Chama a função para carregar os lanches ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
-    // Carrega o cabeçalho
     fetch('../Header/header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
         });
 
-    // Carrega o rodapé
     fetch('../Footer/Footer.html')
         .then(response => response.text())
         .then(data => {
@@ -46,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Carrega os lanches
     fetchLanches();
+});
 
     // Controle do banner
     let indiceAtual = 0;
@@ -65,4 +63,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mostrarBanner(indiceAtual);
     setInterval(proximoBanner, 3000);
-});
+

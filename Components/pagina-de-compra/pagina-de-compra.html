@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x.icon" href="../Header/imagem/logo-img.png"> 
+    <link rel="icon" type="image/x-icon" href="../Header/imagem/logo-img.png"> 
     <link rel="stylesheet" href="pagina-de-compra.css">
     <title>Pagina de compra</title>
-
+</head>
 <body>
 
     <header id="header-placeholder"></header>
@@ -15,54 +14,54 @@
     <main>
 
         <div id="back">
-            <a id="button-back" onclick= "window.history.go(-1)">
+            <a id="button-back" onclick="window.history.go(-1)">
                 <img src="/assets/icons/button-back.png" alt="Voltar a pagina anterior">
             </a>
-
             <div class="separetor"></div>
         </div>
 
         <div class="container">
-            
             <div class="produto">
-                <img src="/assets/images/tijelão.png" alt="">
+                <img id="lanche-imagem" src="" alt="Imagem do Lanche"> 
             </div>
 
             <div id="informacoes">
-                <h2>titulo produto uyfuuyvuv uvivu uyhgov  </h2>
-                
-                <h2>R$23,99</h2>
+                <h2 id="lanche-titulo">Título do Produto</h2> 
+                <h2 id="lanche-preco">Preço</h2>
 
-                <a href="/Components/Pagina-de-pagamento/pagina-de-pagamento.html"><button id="botao-de-compra">Fazer Pedido</button></a>
+                <button id="botao-de-compra">Fazer Pedido</button>
             </div>
-
         </div>
 
         <div class="separetor"></div>
-        
+
         <section id="detalhes">
-
-            <div>
-
-                <div class="sobre">
-                    <h3>Detalhes do lanche</h3>
-                    <img src="/assets/icons/arrow-point-to-right.png" alt="">
-                    <p class="paragrafo">
-                        beibfbweifbifbiwebfibsifcbcwrbcbrbcuybrfbwbuwrbcipwrbicfbfwpir
-                        krebvfberbfpbewrpifbirewifbweribfuvrbvieripbvierbbvpebuivb erbvp
-                        hjebfovbeurbgverubveibvpi digvidbigbbivfsirbvbisbdvibirbivbisdbivb
-                        jhbvobepbvjuu rjbfuobwbvfbibrv iu iorbifirb hfrghirbpbgpv girugibd
-                    </p>
-                </div>
-                
+            <div class="sobre">
+                <h3>Detalhes do lanche</h3>
+                <img src="/assets/icons/arrow-point-to-right.png" alt="">
+                <p id="lanche-descricao" class="paragrafo"></p> 
             </div>
         </section>
-        
+
     </main>
 
     <footer id="footer-placeholder"></footer>
 
-    <script src="../pagina-de-compra/app.js"></script>
-
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('botao-de-compra').addEventListener('click', function() {
+            // Captura o título e o preço do lanche
+            const titulo = document.getElementById('lanche-titulo').textContent;
+            const preco = document.getElementById('lanche-preco').textContent;
+            const valorNumerico = parseFloat(preco.replace('R$ ', '').replace(',', '.'));
+    
+            // Armazena os dados no localStorage
+            localStorage.setItem('lancheTitulo', titulo);
+            localStorage.setItem('lanchePreco', valorNumerico);
+    
+            // Redireciona para a página de pagamento
+            window.location.href = "/Components/Pagina-de-pagamento/pagina-de-pagamento.html";
+        });
+    </script>
 </body>
 </html>

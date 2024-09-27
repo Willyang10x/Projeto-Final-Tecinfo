@@ -12,10 +12,11 @@
     <header id="header-placeholder"></header>
 
     <div id="back">
-        <a id="button-back" onclick= "window.history.go(-1)">
-            <img src="/assets/icons/button-back.png" alt="Voltar a pagina anterior">
+        <a id="button-back" onclick="window.history.go(-1)">
+            <img src="/assets/icons/button-back.png" alt="Voltar a página anterior">
         </a>
     </div>
+    
     <div class="container">
         <h1>Página de Pagamento</h1>
         
@@ -48,7 +49,6 @@
             <input class="coletar-dados" type="text" id="street" name="street" required>
             
             <div class="address-group">
-                
                 <div>
                     <label for="city">Cidade:</label>
                     <input class="coletar-dados" type="text" id="city" name="city" required>
@@ -61,10 +61,6 @@
 
             <label for="neighborhood">Bairro:</label>
             <input class="coletar-dados" type="text" id="neighborhood" name="neighborhood" required>
-
-            <div class="address-group">
-               
-            </div>
         </div>
         
         <!-- Forma de Pagamento -->
@@ -75,14 +71,14 @@
                 <label><input class="coletar-dados" type="radio" name="payment-method" value="cartao" required> Cartão de Crédito ou Débito</label>
             </div>
 
-            <!-- pix qrcode-->
-            <div id="qr-code">
+            <!-- pix qrcode -->
+            <div id="qr-code" style="display: none;">
                 <h3>Escaneie o QR Code para pagar com PIX</h3>
                 <img id="qr-img" src="" alt="QR Code para pagamento PIX">
             </div>
             <!-- Cartão de Crédito/debito -->
             <div id="credit-card-info" style="display: none;">
-                <label for="card-nome">Nome do títular:</label>
+                <label for="card-name">Nome do titular:</label>
                 <input class="coletar-dados" type="text" id="card-name" name="card-name">
 
                 <label for="card-number">Número do Cartão:</label>
@@ -95,16 +91,23 @@
                 <input class="coletar-dados" type="text" id="card-cvv" name="card-cvv">
             </div>
         </div>
-        
-        <!-- Total do Pedido -->
-        <div class="total">
-            Total do Pedido: R$ 23,00
+
+        <!-- Lanches Selecionados -->
+        <div class="form-section">
+            <h2>Lanches Selecionados</h2>
+            <ul id="lanches-selecionados"></ul>
+            <div id="total-pedido" class="total">
+                Total do Pedido: R$ 0,00
+            </div>
+            <button id="adicionar-lanche">Adicionar Lanche</button>
+            <div id="mini-pagina-lanches" style="display: none;">
+                <div id="lista-lanches"></div>
+                <button id="fechar-lanches">Fechar</button>
+            </div>
         </div>
         
         <!-- Botão de Finalizar Pedido -->
-        <a href="../pagina-de-obrigado/pagina-de-obrigado.html">
-            <button type="submit">Finalizar Pedido</button>
-        </a>
+        <button id="finalizar-pedido">Finalizar Pedido</button>
     </div>
 
     <footer id="footer-placeholder"></footer>
