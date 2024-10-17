@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../Header/imagem/logo-img.png" type="image/x-icon">
     <link rel="stylesheet" href="pagina-de-pagamento.css">
-    <title>Concluir pedido</title>
+    <title>Página de Pagamento</title>
 </head>
 <body>
-    
     <header id="header-placeholder"></header>
 
     <div id="back">
         <a id="button-back" onclick="window.history.go(-1)">
-            <img src="/assets/icons/button-back.png" alt="Voltar a página anterior">
+            <img src="/assets/icons/button-back.png" alt="Voltar à página anterior">
         </a>
     </div>
     
     <div class="container">
-        <h1>Página de Pagamento</h1>
+        <h1>Finalizar Pedido</h1>
         
         <!-- Dados do Cliente -->
         <div class="form-section">
@@ -71,16 +70,17 @@
                 <label><input class="coletar-dados" type="radio" name="payment-method" value="cartao" required> Cartão de Crédito ou Débito</label>
             </div>
 
-            <!-- pix qrcode -->
+            <!-- QR Code para PIX -->
             <div id="qr-code" style="display: none;">
                 <h3>Escaneie o QR Code para pagar com PIX</h3>
                 <img id="qr-img" src="" alt="QR Code para pagamento PIX">
             </div>
-            <!-- Cartão de Crédito/debito -->
+            
+            <!-- Informações do Cartão de Crédito/Débido -->
             <div id="credit-card-info" style="display: none;">
                 <label for="card-name">Nome do titular:</label>
                 <input class="coletar-dados" type="text" id="card-name" name="card-name">
-
+                
                 <label for="card-number">Número do Cartão:</label>
                 <input class="coletar-dados" type="text" id="card-number" name="card-number">
                 
@@ -95,14 +95,9 @@
         <!-- Lanches Selecionados -->
         <div class="form-section">
             <h2>Lanches Selecionados</h2>
-            <ul id="lanches-selecionados"></ul>
+            <ul id="lanches-selecionados" class="lanches-selecionados"></ul>
             <div id="total-pedido" class="total">
                 Total do Pedido: R$ 0,00
-            </div>
-            <button id="adicionar-lanche">Adicionar Lanche</button>
-            <div id="mini-pagina-lanches" style="display: none;">
-                <div id="lista-lanches"></div>
-                <button id="fechar-lanches">Fechar</button>
             </div>
         </div>
         
@@ -111,7 +106,6 @@
     </div>
 
     <footer id="footer-placeholder"></footer>
-
     <script src="app.js"></script>
 </body>
 </html>

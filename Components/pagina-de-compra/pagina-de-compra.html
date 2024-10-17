@@ -54,10 +54,12 @@
             const titulo = document.getElementById('lanche-titulo').textContent;
             const preco = document.getElementById('lanche-preco').textContent;
             const valorNumerico = parseFloat(preco.replace('R$ ', '').replace(',', '.'));
+            const lancheId = new URLSearchParams(window.location.search).get('id'); // Captura o ID do lanche da URL
     
             // Armazena os dados no localStorage
-            localStorage.setItem('lancheTitulo', titulo);
-            localStorage.setItem('lanchePreco', valorNumerico);
+            let lanchesSelecionados = JSON.parse(localStorage.getItem('lanchesSelecionados')) || [];
+            lanchesSelecionados.push({ id: lancheId, titulo, preco: valorNumerico }); // Adiciona o lanche selecionado
+            localStorage.setItem('lanchesSelecionados', JSON.stringify(lanchesSelecionados)); // Atualiza o localStorage
     
             // Redireciona para a página de pagamento
             window.location.href = "/Components/Pagina-de-pagamento/pagina-de-pagamento.html";

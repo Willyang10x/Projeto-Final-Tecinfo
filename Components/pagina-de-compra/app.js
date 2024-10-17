@@ -32,20 +32,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Adiciona evento ao botão "Fazer Pedido"
             const botaoFazerPedido = document.getElementById('fazer-pedido');
-            botaoFazerPedido.addEventListener('click', () => {
-                // Armazena o lanche no localStorage
-                const lanchesSelecionados = JSON.parse(localStorage.getItem('lanchesSelecionados')) || [];
-                lanchesSelecionados.push({
-                    id: lanche.id,
-                    titulo: lanche.titulo,
-                    preco: lanche.preco,
-                    descricao: lanche.descricao, // Adiciona a descrição se necessário
-                    imagem: lanche.imagem        // Adiciona a imagem se necessário
-                });
-                localStorage.setItem('lanchesSelecionados', JSON.stringify(lanchesSelecionados));
-                
-                // Redireciona para a página de pagamento
-                window.location.href = 'pagina-pagamento.html'; // Altere para o URL correto da sua página de pagamento
+            botaoFazerPedido.addEventListener('click', async () => {
+                // Envia o pedido para o backend
+                try {
+                    const pedido = {
+                        cliente_id: 1, // Ajuste conforme necessário
+                        lanches: [{ id: lanche.id, titulo: lanche.titulo, preco: lanche.preco }], // Cria um array de lanches
+                        forma_pagamento: 'cartao', // Exemplo, ajuste conforme sua lógica
+                        total: lanche.preco // Total do pedido
+                    };
+
+                    const response = await fetch('http://localhost:3000/pedidos', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(pedido)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Erro ao salvar o pedido: ' + response.statusText);
+                    }
+
+                    const data = await response.json();
+                    console.log(data.message); // Mensagem de sucesso
+
+                    // Armazena os lanches no Local Storage antes de redirecionar
+                    let lanches = JSON.parse(localStorage.getItem('lanches')) || [];
+                    lanches.push({ id: lanche.id, titulo: lanche.titulo, preco: lanche.preco });
+                    localStorage.setItem('lanches', JSON.stringify(lanches));
+
+                    window.location.href = 'pagina-de-pagamento.html'; // Redireciona para a página de pagamento
+                } catch (error) {
+                    console.error('Erro ao fazer pedido:', error);
+                    alert('Ocorreu um erro ao fazer o pedido. Tente novamente.');
+                }
             });
         } catch (error) {
             console.error('Erro ao buscar detalhes do lanche:', error);
