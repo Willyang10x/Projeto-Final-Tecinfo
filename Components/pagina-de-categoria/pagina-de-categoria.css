@@ -37,6 +37,15 @@ body {
     font-weight: bolder;
 }
 
+
+#produtos {
+    margin-top: 40px;
+    display: flex;           
+    flex-wrap: wrap;        
+    gap: 40px;              
+    justify-content: flex-start; 
+}
+
 .separetor {
     border: solid 2px rgb(117, 1, 250);
     max-width: 1000px;
@@ -44,13 +53,15 @@ body {
 }
 
 .product {
-    margin-top: 25px;
-    background-color: #C8D7FF;
-    border: 2px solid #800080;
-    border-radius: 10px;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
+    flex: 0 1 calc(25% - 20px); /* Mantenha 25% da largura disponível, menos a margem */
+    min-width: 200px;          /* Adiciona uma largura mínima para os produtos */
+    max-width: 250px;          /* Adiciona uma largura máxima para evitar que os produtos fiquem muito grandes */
+    box-sizing: border-box;    
+    background-color: #C8D7FF; 
+    border: 2px solid #800080;  
+    border-radius: 10px;        
+    padding: 20px;              
+    text-align: center;         
 }
 
 .product img {
