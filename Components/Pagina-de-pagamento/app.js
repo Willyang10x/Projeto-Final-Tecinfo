@@ -21,6 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('finalizar-pedido').addEventListener('click', async () => {
         if (pedidoEmAndamento) return;
 
+        // Verificar se todos os campos obrigatórios estão preenchidos
+        const camposObrigatorios = document.querySelectorAll('.coletar-dados[required]');
+        for (const campo of camposObrigatorios) {
+            if (!campo.value.trim()) {
+                alert(`Por favor, preencha o campo: ${campo.previousElementSibling.innerText}`);
+                campo.focus();
+                return;
+            }
+        }
+
         const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
         if (!selectedPaymentMethod) {
             alert('Selecione um método de pagamento.');
@@ -75,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = lanche.imagem;
             img.alt = lanche.titulo;
-            img.classList.add('lanche.img');
+            img.classList.add('lanche-img'); // Corrigido para 'lanche-img' em vez de 'lanche.img'
 
             const infoDiv = document.createElement('div');
             infoDiv.classList.add('lanche-info');
@@ -102,28 +112,29 @@ document.addEventListener('DOMContentLoaded', () => {
         totalElement.textContent = `Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
-document.querySelectorAll('input[name="payment-method"]').forEach((input) => {
-    input.addEventListener('change', function() {
-        if (this.value === 'cartao') {
-            document.getElementById('credit-card-info').style.display = 'block';
-            document.getElementById('qr-code').style.display = 'none';
-        } else if (this.value === 'pix') {
-            document.getElementById('credit-card-info').style.display = 'none';
-            generateQrCode();
-        } else {
-            document.getElementById('credit-card-info').style.display = 'none';
-            document.getElementById('qr-code').style.display = 'none';
-        }
+    document.querySelectorAll('input[name="payment-method"]').forEach((input) => {
+        input.addEventListener('change', function() {
+            if (this.value === 'cartao') {
+                document.getElementById('credit-card-info').style.display = 'block';
+                document.getElementById('qr-code').style.display = 'none';
+            } else if (this.value === 'pix') {
+                document.getElementById('credit-card-info').style.display = 'none';
+                generateQrCode();
+            } else {
+                document.getElementById('credit-card-info').style.display = 'none';
+                document.getElementById('qr-code').style.display = 'none';
+            }
+        });
     });
-});
-// Função para gerar o QR Code para o pagamento via PIX
-function generateQrCode() {
-    const totalValue = 23.00; // Valor do pedido
-    const pixData = `00020101021226940014BR.GOV.BCB.PIX0136chavepixexemplo@dominio.com5204000053039865404${totalValue.toFixed(2)}5802BR5909NomeCliente6009Cidade62070503***6304`;
-    const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=${encodeURIComponent(pixData)}`;
-    document.getElementById('qr-img').src = '/assets/images/qr-code-pix.png';
-    document.getElementById('qr-code').style.display = 'block';
-}
+
+    // Função para gerar o QR Code para o pagamento via PIX
+    function generateQrCode() {
+        const totalValue = 23.00; // Valor do pedido
+        const pixData = `00020101021226940014BR.GOV.BCB.PIX0136chavepixexemplo@dominio.com5204000053039865404${totalValue.toFixed(2)}5802BR5909NomeCliente6009Cidade62070503***6304`;
+        const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=${encodeURIComponent(pixData)}`;
+        document.getElementById('qr-img').src = '/assets/images/qr-code-pix.png';
+        document.getElementById('qr-code').style.display = 'block';
+    }
 
     atualizarLanches();
 });
