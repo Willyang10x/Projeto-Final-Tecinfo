@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para buscar lanches
     async function fetchLanches(categoria) {
         try {
-            const response = await fetch(`http://localhost:3000/lanchesCategoria?categoria=${categoria}`); // URL para buscar os produtos pela categoria
+            const response = await fetch(`http://localhost:3000/lanchesCategoria?categoria=${categoria}`);
             if (!response.ok) {
                 throw new Error('Erro ao buscar produtos: ' + response.statusText);
             }
             const lanches = await response.json();
 
-            const produtosContainer = document.getElementById('produtos'); // Contêiner onde os produtos serão exibidos
-            produtosContainer.innerHTML = ''; // Limpa produtos anteriores
+            const produtosContainer = document.getElementById('produtos');
+            produtosContainer.innerHTML = '';
 
             lanches.forEach(lanche => {
                 const productDiv = document.createElement('div');
@@ -38,15 +38,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     </a>
                 `;
 
-                produtosContainer.appendChild(productDiv); // Adiciona o produto ao contêiner
+                produtosContainer.appendChild(productDiv);
+            });
+
+            // Adiciona a rolagem horizontal
+            const scrollContainer = document.getElementById('produtos');
+            scrollContainer.addEventListener('wheel', (event) => {
+                if (event.deltaY !== 0) {
+                    scrollContainer.scrollLeft += event.deltaY; // Rola para a direita ou esquerda
+                    event.preventDefault(); // Previne o comportamento padrão de rolagem vertical
+                }
             });
         } catch (error) {
             console.error('Erro ao buscar lanches:', error);
         }
     }
 
-    // Chama a função para carregar os produtos ao carregar a página
-    const urlParams = new URLSearchParams(window.location.search); // Pega os parâmetros da URL
-    const categoria = urlParams.get('categoria') || 'Mais Quentes'; // Obtém a categoria ou define um padrão
-    fetchLanches(categoria); // Chama a função para buscar lanches da categoria especificada
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoria = urlParams.get('categoria') || 'Mais Quentes';
+    fetchLanches(categoria);
 });

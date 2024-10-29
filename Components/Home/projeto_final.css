@@ -73,17 +73,27 @@ body {
     margin: 0px auto 20px auto;
 }
 
-.container-produto {
+.categoria-container {
+    margin-bottom: 40px; /* Espaço entre as categorias */
+}
+
+.categoria-container h3 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.produtos {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite que os itens se movam para a próxima linha */
+    overflow-x: auto; /* Adiciona a barra de rolagem horizontal */
+    gap: 20px; /* Espaçamento entre os produtos */
+    padding: 10px 0; /* Padding para o espaço interno */
 }
 
 .product {
     background-color: #C8D7FF;
     border: 2px solid #800080;
     border-radius: 10px;
-    margin: 10px;
     padding: 20px;
     width: 200px; /* Mantenha ou ajuste conforme necessário */
     text-align: center;
@@ -120,3 +130,4 @@ body {
         max-width: 180px; /* Limite máximo da largura */
     }
 }
+

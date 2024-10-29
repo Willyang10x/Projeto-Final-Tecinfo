@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para buscar os detalhes do lanche
     async function fetchLancheDetails(id) {
         try {
-            const response = await fetch(`http://localhost:3000/lanches/${id}`); // Faz a requisição para o backend usando o ID
+            const response = await fetch(`http://localhost:3000/lanches/${id}`);
             if (!response.ok) {
                 throw new Error('Erro ao buscar detalhes do lanche: ' + response.statusText);
             }
@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     const pedido = {
                         cliente_id: 1, // Ajuste conforme necessário
-                        lanches: [{ id: lanche.id, titulo: lanche.titulo, preco: lanche.preco }], // Cria um array de lanches
-                        forma_pagamento: 'cartao', // Exemplo, ajuste conforme sua lógica
-                        total: lanche.preco // Total do pedido
+                        lanches: [{ id: lanche.id, titulo: lanche.titulo, preco: lanche.preco }],
+                        forma_pagamento: 'cartao',
+                        total: lanche.preco
                     };
 
                     const response = await fetch('http://localhost:3000/pedidos', {
@@ -55,14 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     const data = await response.json();
-                    console.log(data.message); // Mensagem de sucesso
+                    console.log(data.message);
 
-                    // Armazena os lanches no Local Storage antes de redirecionar
+                    // Armazena os lanches no Local Storage, mas sem a imagem
                     let lanches = JSON.parse(localStorage.getItem('lanches')) || [];
-                    lanches.push({ id: lanche.id, titulo: lanche.titulo, preco: lanche.preco });
+                    lanches.push({
+                        id: lanche.id,
+                        titulo: lanche.titulo,
+                        preco: lanche.preco
+                        // Não armazena a URL da imagem
+                    });
                     localStorage.setItem('lanches', JSON.stringify(lanches));
 
-                    window.location.href = 'pagina-de-pagamento.html'; // Redireciona para a página de pagamento
+                    window.location.href = 'pagina-de-pagamento.html';
                 } catch (error) {
                     console.error('Erro ao fazer pedido:', error);
                     alert('Ocorreu um erro ao fazer o pedido. Tente novamente.');
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lancheId = urlParams.get('id');
 
     if (lancheId) {
-        fetchLancheDetails(lancheId); // Busca e exibe os detalhes do lanche
+        fetchLancheDetails(lancheId);
     }
 
     // Função para expandir/recolher detalhes do lanche
