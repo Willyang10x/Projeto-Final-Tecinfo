@@ -1,5 +1,6 @@
 @import url(../Header/header.css);
 @import url(../Footer/Footer.css);
+@import url(../botão-flutuante/botao.css);
 
 body {
     font-family: 'Arial', sans-serif;

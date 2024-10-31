@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png"> 
     <link rel="stylesheet" href="Style.css">
     <title>Histórico de Compras</title>
 </head>
@@ -12,6 +12,12 @@
 
     <header id="header-placeholder"></header>
 
+    <!-- Botão de carrinho suspenso -->
+    <div class="cart-button" onclick="goToCheckout()">
+        <img src="/assets/icons/carrinho.png" alt="Carrinho">
+        <span id="cart-count" class="cart-count">0</span>
+    </div>
+    
     <div id="back">
         <a id="button-back" onclick="window.history.go(-1)">
             <img src="/assets/icons/button-back.png" alt="Voltar a página anterior">
@@ -44,6 +50,7 @@
 
     <footer id="footer-placeholder"></footer>
 
+    <script src="/Components/botão-flutuante/botao.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

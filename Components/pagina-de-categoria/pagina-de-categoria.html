@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="images/imagem_2024-06-13_115000299-removebg-preview.png"> 
+    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png"> 
     <link rel="stylesheet" href="pagina-de-categoria.css">
     <link rel="stylesheet" href="/Components/pagina-de-categoria/header.css">
     <title>PROJETO - FINAL</title>
 </head>
 
 <body>
+    <!-- Botão de carrinho suspenso -->
+    <div class="cart-button" onclick="goToCheckout()">
+        <img src="/assets/icons/carrinho.png" alt="Carrinho">
+        <span id="cart-count" class="cart-count">0</span>
+    </div>
 
     <header id="header-placeholder"></header>
     
@@ -31,7 +36,8 @@
     </section>
 
     <footer id="footer-placeholder"></footer>
-
+    
+    <script src="/Components/botão-flutuante/botao.js"></script>
     <script src="app.js"></script>
     
 </body>

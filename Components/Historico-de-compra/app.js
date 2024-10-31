@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             document.getElementById('footer-placeholder').innerHTML = data;
         });
+        
+    fetch('../botão-flutuante/botao.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('Carrinho').innerHTML = data;
+        });
 });
 
 const clienteId = 1; // Substitua pelo ID real do cliente
