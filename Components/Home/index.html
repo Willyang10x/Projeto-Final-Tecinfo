@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +7,18 @@
     <link rel="stylesheet" href="projeto_final.css">
     <title>Home</title>
 </head>
-
 <body>
-
     <header id="header-placeholder"></header>
-        
+
+    <!-- Botão de carrinho suspenso -->
+    <div class="cart-button" onclick="goToCheckout()">
+        <img src="/assets/icons/carrinho.png" alt="Carrinho">
+        <span id="cart-count" class="cart-count">0</span>
+    </div>
+
     <div class="container-banner">
         <div class="wrapper-banner">
-            <a href="/Components/pagina-de-compra/pagina-de-compra.html" class="banner">
+            <a href="#" class="banner">
                 <img src="/Assets/images/banner 1.jpeg" alt="Banner 1">
             </a>
             <a href="#" class="banner">
@@ -56,17 +59,24 @@
                 </div>
             </div>
         </section>
+       
+        <div id="overlay" class="overlay">
+            <div id="overlayContent" class="overlay-content">
+                <button id="closeOverlay">Fechar</button>
+                <div id="resultados"></div>
+            </div>
+        </div>
         
         <section class="products">
-            <h2>Todos os Produtos</h2>
             <div class="separator"></div>
             <div class="container-produto" id="produtos"></div>
         </section>
-        
     </main>
- 
+
     <footer id="footer-placeholder"></footer>
     
+    <!-- Referências aos scripts -->
+    <script src="/Components/botão-flutuante/botao.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footer-placeholder').innerHTML = data;
         });
 
+        fetch('../botão-flutuante/botao.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('Carrinho').innerHTML = data;
+        });
     // Carrega os lanches
     fetchLanches();
 });

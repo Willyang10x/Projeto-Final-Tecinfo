@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../Header/imagem/logo-img.png"> 
     <link rel="stylesheet" href="pagina-de-compra.css">
-    <title>Pagina de compra</title>
+    <title>Página de Compra</title>
 </head>
 <body>
 
     <header id="header-placeholder"></header>
 
-    <main>
+    <!-- Botão de carrinho suspenso -->
+    <div class="cart-button" onclick="goToCheckout()">
+        <img src="/assets/icons/carrinho.png" alt="Carrinho">
+        <span id="cart-count" class="cart-count">0</span>
+    </div>
 
+    <main>
         <div id="back">
             <a id="button-back" onclick="window.history.go(-1)">
-                <img src="/assets/icons/button-back.png" alt="Voltar a pagina anterior">
+                <img src="/assets/icons/button-back.png" alt="Voltar à página anterior">
             </a>
             <div class="separetor"></div>
         </div>
@@ -29,7 +34,7 @@
                 <h2 id="lanche-titulo">Título do Produto</h2> 
                 <h2 id="lanche-preco">Preço</h2>
 
-                <button id="botao-de-compra">Fazer Pedido</button>
+                <button id="botao-de-compra">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -42,28 +47,12 @@
                 <p id="lanche-descricao" class="paragrafo"></p> 
             </div>
         </section>
-
     </main>
 
     <footer id="footer-placeholder"></footer>
 
     <script src="app.js"></script>
-    <script>
-        document.getElementById('botao-de-compra').addEventListener('click', function() {
-            // Captura o título e o preço do lanche
-            const titulo = document.getElementById('lanche-titulo').textContent;
-            const preco = document.getElementById('lanche-preco').textContent;
-            const valorNumerico = parseFloat(preco.replace('R$ ', '').replace(',', '.'));
-            const lancheId = new URLSearchParams(window.location.search).get('id'); // Captura o ID do lanche da URL
-    
-            // Armazena os dados no localStorage
-            let lanchesSelecionados = JSON.parse(localStorage.getItem('lanchesSelecionados')) || [];
-            lanchesSelecionados.push({ id: lancheId, titulo, preco: valorNumerico }); // Adiciona o lanche selecionado
-            localStorage.setItem('lanchesSelecionados', JSON.stringify(lanchesSelecionados)); // Atualiza o localStorage
-    
-            // Redireciona para a página de pagamento
-            window.location.href = "/Components/Pagina-de-pagamento/pagina-de-pagamento.html";
-        });
-    </script>
+    <script src="/Components/botão-flutuante/botao.js"></script>
+
 </body>
 </html>

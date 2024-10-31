@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Erro ao carregar o footer:', error));
 
+    fetch('../botão-flutuante/botao.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('Carrinho').innerHTML = data;
+        });
+        
     // Função para buscar os detalhes do lanche
     async function fetchLancheDetails(id) {
         try {
