@@ -2,21 +2,22 @@
 @import url(../Footer/Footer.css);
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #C8D7FF;
+    font-family: 'Arial', sans-serif;
+    background-color: #E3E7FF; /* Alterado para um azul mais claro */
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-#button-back{
+#button-back {
     height: 60px;
-    text-align: left;
+    display: flex; /* Flexbox para centralizar o conteúdo */
+    align-items: center; /* Alinhamento vertical */
     padding-left: 20px;
-    
-    img{
-        cursor: pointer;
-    }
+}
+
+#button-back img {
+    cursor: pointer;
 }
 
 .container {
@@ -28,21 +29,27 @@ body {
 h1 {
     text-align: center;
     color: #4B0082;
+    margin-bottom: 30px; /* Adicionado espaço abaixo do título */
 }
 
 .contact-info {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Alinhamento melhorado */
     margin-bottom: 40px;
 }
 
 .contact-info div {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 30%;
+    width: 32%; /* Mantido o tamanho, mas com um espaçamento adequado */
+    transition: transform 0.3s; /* Adiciona efeito ao passar o mouse */
+}
+
+.contact-info div:hover {
+    transform: translateY(-5px); /* Leve elevação ao passar o mouse */
 }
 
 .contact-info div h3 {
@@ -56,7 +63,7 @@ h1 {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -67,19 +74,25 @@ label {
 
 input, textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px; /* Aumentado para melhor usabilidade */
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
+    transition: border-color 0.3s; /* Transição suave na borda */
+}
+
+input:focus, textarea:focus {
+    border-color: #4B0082; /* Cor da borda ao focar */
 }
 
 button {
     background-color: #4B0082;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Aumentado para melhor usabilidade */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s; /* Transição suave para o hover */
 }
 
 button:hover {

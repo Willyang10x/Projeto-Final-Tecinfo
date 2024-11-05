@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para carregar o header e footer dinamicamente
     const loadHTML = async (url, placeholderId) => {
         try {
             const response = await fetch(url);
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('finalizar-pedido').addEventListener('click', async () => {
         if (pedidoEmAndamento) return;
 
-        // Verificar se todos os campos obrigatórios estão preenchidos
         const camposObrigatorios = document.querySelectorAll('.coletar-dados[required]');
         for (const campo of camposObrigatorios) {
             if (!campo.value.trim()) {
@@ -37,14 +35,30 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Se o método de pagamento for cartão, verificar se os dados do cartão foram preenchidos
+        if (selectedPaymentMethod.value === 'cartao') {
+            const cardName = document.getElementById('card-name').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const cardExpiry = document.getElementById('card-expiry').value;
+            const cardCvv = document.getElementById('card-cvv').value;
+
+            if (!cardName || !cardNumber || !cardExpiry || !cardCvv) {
+                alert('Por favor, preencha todos os campos do cartão.');
+                return;
+            }
+        }
+
         pedidoEmAndamento = true;
 
         const pedido = {
-            numeroPedido: Math.floor(Math.random() * 100), // Gera um número de pedido aleatório
-            cliente_id: 1,
-            lanches: lanchesSelecionados,
+            cliente_id: 1, // Troque por um ID dinâmico com base na sessão do cliente
+            total: lanchesSelecionados.reduce((acc, lanche) => acc + lanche.preco, 0),
             forma_pagamento: selectedPaymentMethod.value,
-            total: lanchesSelecionados.reduce((acc, lanche) => acc + lanche.preco, 0)
+            nome_titular: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-name').value : null,
+            numero_cartao: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-number').value : null,
+            validade_cartao: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-expiry').value : null,
+            cvv: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-cvv').value : null,
+            lanches: lanchesSelecionados
         };
 
         try {
@@ -56,8 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('Pedido finalizado com sucesso!');
-                localStorage.setItem("pedidoConcluido", JSON.stringify(pedido)); // Armazena o pedido no localStorage
-                localStorage.removeItem('lanchesSelecionados'); // Limpa o carrinho
+                localStorage.setItem("pedidoConcluido", JSON.stringify(pedido));
+                localStorage.removeItem('lanchesSelecionados');
+                
+                // Gerar e baixar o PDF após o pedido ser finalizado com sucesso
+                gerarPDFPedido(pedido);
+                
                 window.location.href = '/Components/pagina-de-obrigado/pagina-de-obrigado.html';
             } else {
                 const errorData = await response.json();
@@ -85,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = lanche.imagem;
             img.alt = lanche.titulo;
-            img.classList.add('lanche-img'); // Corrigido para 'lanche-img' em vez de 'lanche.img'
+            img.classList.add('lanche-img');
 
             const infoDiv = document.createElement('div');
             infoDiv.classList.add('lanche-info');
@@ -127,12 +145,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para gerar o QR Code para o pagamento via PIX
     function generateQrCode() {
-        
         document.getElementById('qr-img').src = '/assets/images/qr-code-pix.png';
         document.getElementById('qr-code').style.display = 'block';
     }
 
     atualizarLanches();
+    
+    function gerarPDFPedido(pedido) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        const logoUrl = "/assets/icons/logo.png";
+
+        // Adicionar a logo ao centro do topo
+        doc.addImage(logoUrl, 'PNG', 80, 10, 50, 25);
+
+        doc.setFontSize(18);
+        doc.text("Detalhes do Pedido", doc.internal.pageSize.width / 2, 50, null, null, 'center');
+
+        doc.setFontSize(12);
+        doc.text(`Número do Pedido: ${pedido.numeroPedido}`, doc.internal.pageSize.width / 2, 60, null, null, 'center');
+        doc.text(`Forma de Pagamento: ${pedido.forma_pagamento}`, doc.internal.pageSize.width / 2, 70, null, null, 'center');
+        doc.text(`Total: R$ ${pedido.total.toFixed(2).replace('.', ',')}`, doc.internal.pageSize.width / 2, 80, null, null, 'center');
+
+        doc.setFontSize(14);
+        doc.text("Dados do Cliente", doc.internal.pageSize.width / 2, 90, null, null, 'center');
+        doc.setFontSize(12);
+        const clienteInfo = [
+            `Nome: ${pedido.nome_titular}`,  // Adapte para capturar o nome do cliente real
+            `E-mail: ${document.getElementById('email').value}`,
+            // Adicione outros campos relevantes conforme necessário
+        ];
+
+        let yPosition = 100;
+        clienteInfo.forEach(line => {
+            doc.text(line, doc.internal.pageSize.width / 2, yPosition, null, null, 'center');
+            yPosition += 10;
+        });
+
+        doc.setFontSize(14);
+        doc.text("Lanches Selecionados:", doc.internal.pageSize.width / 2, yPosition + 10, null, null, 'center');
+        yPosition += 20;
+        doc.setFontSize(12);
+        pedido.lanches.forEach((lanche) => {
+            doc.text(
+                `${lanche.titulo} - R$ ${lanche.preco.toFixed(2).replace('.', ',')}`,
+                doc.internal.pageSize.width / 2,
+                yPosition,
+                null,
+                null,
+                'center'
+            );
+            yPosition += 10;
+        });
+
+        doc.save(`pedido_${pedido.nome_titular}.pdf`);  // Gera o PDF com o nome do cliente
+    }
 });
