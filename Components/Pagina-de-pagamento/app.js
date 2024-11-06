@@ -1,16 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loadHTML = async (url, placeholderId) => {
-        try {
-            const response = await fetch(url);
-            const data = await response.text();
-            document.getElementById(placeholderId).innerHTML = data;
-        } catch (error) {
-            console.error(`Erro ao carregar ${placeholderId}:`, error);
-        }
-    };
+    fetch('/Components/Header/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
 
-    loadHTML('../Header/header.html', 'header-placeholder');
-    loadHTML('../Footer/Footer.html', 'footer-placeholder');
+            // Adiciona a funcionalidade de busca ao carregar o header
+            const script = document.createElement('script');
+            script.src = '/Components/Header/search.js';
+            document.body.appendChild(script);
+        })
+        .catch(error => console.error('Erro ao carregar o header:', error));
+
+    fetch('../Footer/Footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Erro ao carregar o footer:', error));
 
     const lanchesSelecionados = JSON.parse(localStorage.getItem('lanchesSelecionados')) || [];
     const totalElement = document.getElementById('total-pedido');
@@ -35,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Se o método de pagamento for cartão, verificar se os dados do cartão foram preenchidos
         if (selectedPaymentMethod.value === 'cartao') {
             const cardName = document.getElementById('card-name').value;
             const cardNumber = document.getElementById('card-number').value;
@@ -50,11 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pedidoEmAndamento = true;
 
+        const nomeCliente = document.getElementById('name').value;
+
         const pedido = {
-            cliente_id: 1, // Troque por um ID dinâmico com base na sessão do cliente
+            cliente_id: 1,
             total: lanchesSelecionados.reduce((acc, lanche) => acc + lanche.preco, 0),
             forma_pagamento: selectedPaymentMethod.value,
-            nome_titular: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-name').value : null,
+            nome_titular: nomeCliente,
             numero_cartao: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-number').value : null,
             validade_cartao: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-expiry').value : null,
             cvv: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-cvv').value : null,
@@ -73,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem("pedidoConcluido", JSON.stringify(pedido));
                 localStorage.removeItem('lanchesSelecionados');
                 
-                // Gerar e baixar o PDF após o pedido ser finalizado com sucesso
                 gerarPDFPedido(pedido);
                 
                 window.location.href = '/Components/pagina-de-obrigado/pagina-de-obrigado.html';
@@ -158,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const logoUrl = "/assets/icons/logo.png";
 
-        // Adicionar a logo ao centro do topo
         doc.addImage(logoUrl, 'PNG', 80, 10, 50, 25);
 
         doc.setFontSize(18);
@@ -173,9 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
         doc.text("Dados do Cliente", doc.internal.pageSize.width / 2, 90, null, null, 'center');
         doc.setFontSize(12);
         const clienteInfo = [
-            `Nome: ${pedido.nome_titular}`,  // Adapte para capturar o nome do cliente real
+            `Nome: ${pedido.nome_titular}`,
             `E-mail: ${document.getElementById('email').value}`,
-            // Adicione outros campos relevantes conforme necessário
         ];
 
         let yPosition = 100;
@@ -200,6 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             yPosition += 10;
         });
 
-        doc.save(`pedido_${pedido.nome_titular}.pdf`);  // Gera o PDF com o nome do cliente
+        doc.save(`pedido_${pedido.nome_titular}.pdf`);
     }
 });

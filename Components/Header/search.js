@@ -1,11 +1,15 @@
 document.getElementById('search-button').addEventListener('click', () => {
     const searchTerm = document.getElementById('search-input').value;
     if (searchTerm) {
-        fetchLanches(searchTerm);
+        // Redireciona para a página de categorias com o termo de pesquisa
+        window.location.href = `/Components/pagina-de-categoria/pagina-de-categoria.html?search=${encodeURIComponent(searchTerm)}`;
     }
 });
 
+
+// Função que faz a busca dos lanches no servidor
 function fetchLanches(searchTerm) {
+    // Faz a requisição para o backend com o termo de pesquisa
     fetch(`http://localhost:3000/lanches/search/${searchTerm}`)
         .then(response => response.json())
         .then(lanches => {
@@ -30,16 +34,8 @@ function fetchLanches(searchTerm) {
                     resultadosContainer.appendChild(productDiv);
                 });
             }
-
-            // Exibe o overlay com os resultados
-            document.getElementById('overlay').style.display = 'flex';
         })
         .catch(error => {
             console.error('Erro ao buscar os lanches:', error);
         });
 }
-
-// Fecha o overlay ao clicar no botão de fechar
-document.getElementById('closeOverlay').addEventListener('click', function() {
-    document.getElementById('overlay').style.display = 'none';
-});

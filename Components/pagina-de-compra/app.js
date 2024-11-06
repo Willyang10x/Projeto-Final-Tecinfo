@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Carrega o header e o footer dinamicamente
-    fetch('../Header/header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
-        })
+    fetch('/Components/Header/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+
+                    // Adiciona a funcionalidade de busca ao carregar o header
+                    const script = document.createElement('script');
+                    script.src = '/Components/Header/search.js';
+                    document.body.appendChild(script);
+                })
         .catch(error => console.error('Erro ao carregar o header:', error));
 
     fetch('../Footer/Footer.html')
