@@ -75,7 +75,7 @@ select {
     color: #fff;
     padding: 10px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
@@ -173,7 +173,7 @@ button:hover {
 }
 
 .remove-lanche {
-    text-align: center;
+    margin-bottom: 50px;
     font-size: 14px;
     width: 25px; /* Largura do botão */
     height: 25px;
@@ -187,4 +187,9 @@ button:hover {
 
 .remove-lanche:hover {
     background-color:linear-gradient(90deg, rgb(218, 176, 253) 0%, rgba(133, 34, 212, 1) 100%);;
+}
+
+
+ul,ol {
+    list-style: none;
 }

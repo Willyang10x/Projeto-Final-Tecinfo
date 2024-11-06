@@ -15,6 +15,7 @@ body {
 }
 
 #button-back{
+    position: fixed;
     cursor: pointer;
     margin-left: 25px;
 }
@@ -23,12 +24,12 @@ body {
     max-width: 800px;
     margin:50px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     gap: 50px;
 }
 
 .produto img {
-    max-width: 300px;  
+    max-width: 250px;  
     border-radius: 8px; 
     border: 3px solid rgb(117, 1, 250);         
 }
@@ -38,7 +39,7 @@ body {
 }
 
 #informacoes h2{
-    margin-bottom: 40px ;
+    margin-bottom: 15px ;
 } 
 
 #botao-de-compra {
@@ -59,7 +60,7 @@ body {
 .separetor1{
     border: solid 2px rgb(117, 1, 250);
     max-width: 1000px;
-    margin: auto;
+    margin: 15px auto;
 }
 
 .separetor {
@@ -69,7 +70,7 @@ body {
 }
 
 #detalhes{
-    margin: 30px auto;
+    margin: 20px auto;
     max-width: 800px;
     padding: 20px;
     border-radius: 20px;
