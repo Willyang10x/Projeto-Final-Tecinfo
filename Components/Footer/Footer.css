@@ -84,7 +84,6 @@ body {
 
 .footer-subscribe input {
     width: 100%;
-    max-width: 300px;
     padding: 10px;
     border-radius: 8px;
     border: 2px solid #333;
@@ -92,6 +91,7 @@ body {
 }
 
 .footer-subscribe button {
+    width: 100%;
     padding: 10px 20px;
     border-radius: 8px;
     background-color: #501c86;
