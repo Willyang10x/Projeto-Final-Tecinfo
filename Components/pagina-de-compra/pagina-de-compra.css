@@ -56,6 +56,12 @@ body {
     background: rgb(111, 44, 143);
 }
 
+.separetor1{
+    border: solid 2px rgb(117, 1, 250);
+    max-width: 1000px;
+    margin: auto;
+}
+
 .separetor {
     border: solid 2px rgb(117, 1, 250);
     max-width: 1000px;

@@ -14,6 +14,7 @@ body {
 }
 
 #button-back {
+    position: fixed;
     height: 60px;
     text-align: left;
     padding-left: 20px;
@@ -32,7 +33,7 @@ img {
 h1 {
     text-align: center;
     color: #4B0082;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .form-section {
@@ -76,6 +77,10 @@ select {
     border-radius: 5px;
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+.finalizar-pedido{
+    font-size: 20px;
 }
 
 button {
@@ -168,9 +173,11 @@ button:hover {
 }
 
 .remove-lanche {
-    width: 20px; /* Largura do botão */
-    height: 20px;
-    background-color: red;
+    text-align: center;
+    font-size: 14px;
+    width: 25px; /* Largura do botão */
+    height: 25px;
+    background-color: linear-gradient(90deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
     color: white;
     border: none;
     padding: 2px 2px;
@@ -179,5 +186,5 @@ button:hover {
 }
 
 .remove-lanche:hover {
-    background-color: darkred;
+    background-color:linear-gradient(90deg, rgb(218, 176, 253) 0%, rgba(133, 34, 212, 1) 100%);;
 }
