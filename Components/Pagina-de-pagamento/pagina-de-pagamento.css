@@ -188,3 +188,9 @@ button:hover {
 .remove-lanche:hover {
     background-color:linear-gradient(90deg, rgb(218, 176, 253) 0%, rgba(133, 34, 212, 1) 100%);;
 }
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

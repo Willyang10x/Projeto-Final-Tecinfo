@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     fetch('/Components/Header/header.html')
                 .then(response => response.text())
@@ -93,15 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     produtosDiv.appendChild(productDiv);
                 });
     
-                // Adiciona a rolagem horizontal
-                produtosDiv.classList.add('scrollable');
-                produtosDiv.addEventListener('wheel', (event) => {
-                    if (event.deltaY !== 0) {
-                        produtosDiv.scrollLeft += event.deltaY; // Rola para a direita ou esquerda
-                        event.preventDefault(); // Previne o comportamento padrão de rolagem vertical
-                    }
-                });
-    
                 categoriaDiv.appendChild(produtosDiv);
                 produtosContainer.appendChild(categoriaDiv); // Adiciona a categoria ao contêiner principal
             }
@@ -109,4 +98,3 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao buscar lanches:', error);
         }
     }
-    

@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Carrega o cabeçalho
-    fetch('../Header/header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
-        });
+    fetch('/Components/Header/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+
+                    // Adiciona a funcionalidade de busca ao carregar o header
+                    const script = document.createElement('script');
+                    script.src = '/Components/Header/search.js';
+                    document.body.appendChild(script);
+                });
 
     // Carrega o rodapé
     fetch('../Footer/Footer.html')
@@ -19,12 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('Carrinho').innerHTML = data;
         });
 
-    // Função para buscar lanches
-    async function fetchLanches(searchTerm = '') {
+    // Função para buscar lanches por termo de busca ou categoria
+    async function fetchLanches(searchTerm = '', categoria = '') {
         try {
-            let url = 'http://localhost:3000/lanches';
+            let url;
             if (searchTerm) {
-                url += `/search/${searchTerm}`;
+                url = `http://localhost:3000/lanches/search/${searchTerm}`;
+            } else {
+                url = `http://localhost:3000/lanchesCategoria?categoria=${categoria}`;
             }
 
             const response = await fetch(url);
@@ -39,56 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (searchTerm) {
-                // Exibe resultados da busca
-                lanches.forEach(lanche => {
-                    const productDiv = document.createElement('div');
-                    productDiv.classList.add('product');
-                    productDiv.innerHTML = `
-                        <img src="${lanche.imagem}" alt="${lanche.titulo}">
-                        <h3>${lanche.titulo}</h3>
-                        <p>R$ ${lanche.preco.toFixed(2)}</p>
-                        <a href="/Components/pagina-de-compra/pagina-de-compra.html?id=${lanche.id}">
-                            <button>Conferir</button>
-                        </a>
-                    `;
-                    produtosContainer.appendChild(productDiv);
-                });
-            } else {
-                // Agrupa por categoria se não houver termo de busca
-                const categorias = {};
-                lanches.forEach(lanche => {
-                    if (!categorias[lanche.categoria]) categorias[lanche.categoria] = [];
-                    categorias[lanche.categoria].push(lanche);
-                });
-
-                for (const [categoria, itens] of Object.entries(categorias)) {
-                    const categoriaDiv = document.createElement('div');
-                    categoriaDiv.classList.add('categoria-container');
-                    const tituloCategoria = document.createElement('h2');
-                    tituloCategoria.textContent = categoria;
-                    categoriaDiv.appendChild(tituloCategoria);
-
-                    const produtosDiv = document.createElement('div');
-                    produtosDiv.classList.add('produtos');
-                    itens.forEach(lanche => {
-                        const productDiv = document.createElement('div');
-                        productDiv.classList.add('product');
-                        productDiv.innerHTML = `
-                            <img src="${lanche.imagem}" alt="${lanche.titulo}">
-                            <p>${lanche.titulo}</p>
-                            <p>R$ ${lanche.preco.toFixed(2)}</p>
-                            <a href="/Components/pagina-de-compra/pagina-de-compra.html?id=${lanche.id}">
-                                <button>Conferir</button>
-                            </a>
-                        `;
-                        produtosDiv.appendChild(productDiv);
-                    });
-
-                    categoriaDiv.appendChild(produtosDiv);
-                    produtosContainer.appendChild(categoriaDiv);
-                }
-            }
+            lanches.forEach(lanche => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <img src="${lanche.imagem}" alt="${lanche.titulo}">
+                    <p>${lanche.titulo}</p>
+                    <p>R$ ${lanche.preco.toFixed(2)}</p>
+                    <a href="/Components/pagina-de-compra/pagina-de-compra.html?id=${lanche.id}">
+                        <button>Conferir</button>
+                    </a>
+                `;
+                produtosContainer.appendChild(productDiv);
+            });
         } catch (error) {
             console.error('Erro ao buscar lanches:', error);
         }
@@ -99,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchTerm = urlParams.get('search') || ''; // Captura o termo de busca inicial
     const categoria = urlParams.get('categoria') || 'Mais Quentes'; // Captura a categoria, se existir
 
-    // Carrega lanches com base no termo de busca e na categoria
-    fetchLanches(searchTerm);
+    // Carrega lanches com base no termo de busca ou na categoria
+    fetchLanches(searchTerm, categoria);
 
     // Lida com a pesquisa dinamicamente
     const searchInput = document.getElementById('search-input');
