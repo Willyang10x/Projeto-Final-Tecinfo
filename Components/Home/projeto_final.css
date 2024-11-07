@@ -1,5 +1,6 @@
 @import url(../Header/header.css);
 @import url(../Footer/Footer.css);
+@import url(../botão-flutuante/botao.css);
 
 body {
     background-color: #C8D7FF;
@@ -32,7 +33,7 @@ body {
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-#filtros-categorias{
+#filtros-categorias {
     margin: auto;
     max-width: 800px;
 }
@@ -43,12 +44,12 @@ body {
     margin-top: 40px;
 }
 
-.category-item{
+.category-item {
     cursor: pointer;
 }
 
 .category-item p {
-    margin:10px auto;
+    margin: 10px auto;
     text-align: center;
     font-weight: bold;
 }
@@ -62,30 +63,40 @@ body {
 
 .products h2 {
     color: #800080;
-    text-align: center ;
+    text-align: center;
     font-size: xx-large;
-    margin: 30px 0px 0px 0px
+    margin: 30px 0px 0px 0px;
 }
 
-.separetor {
+.separator {
     border: solid 2px rgb(117, 1, 250);
     max-width: 1000px;
     margin: 0px auto 20px auto;
 }
 
-.container-produto{
-    display: flex;
-    justify-content: center;
+.categoria-container {
+    margin-bottom: 40px; /* Espaço entre as categorias */
 }
 
+.categoria-container h3 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.produtos {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto; /* Adiciona a barra de rolagem horizontal */
+    gap: 20px; /* Espaçamento entre os produtos */
+    padding: 10px 0; /* Padding para o espaço interno */
+}
 
 .product {
     background-color: #C8D7FF;
     border: 2px solid #800080;
     border-radius: 10px;
-    margin: 10px;
     padding: 20px;
-    width: 200px;
+    width: 200px; /* Mantenha ou ajuste conforme necessário */
     text-align: center;
 }
 
@@ -100,8 +111,8 @@ body {
 
 .product button {
     font-size: medium;
-    background-color: #C8D7FF;
-    color: #4B0082;
+    background-color: #5d049c;
+    color: #ffffff;
     border: solid 2px #4B0082;
     padding: 10px 20px;
     cursor: pointer;
@@ -109,7 +120,15 @@ body {
 }
 
 .product button:hover {
-    background-color: #4B0082;
+    background-color: #7a15c2;
     color: #C8D7FF;
+}
+
+/* Media Query para ajustar o tamanho do produto em telas menores */
+@media (max-width: 600px) {
+    .product {
+        width: 90%; /* Ajuste a largura para telas menores */
+        max-width: 180px; /* Limite máximo da largura */
+    }
 }
 

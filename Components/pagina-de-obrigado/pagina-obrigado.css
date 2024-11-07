@@ -1,18 +1,13 @@
-
-
-*{
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #C8D7FF;
     color: #333;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,29 +41,47 @@ p {
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    border: 2px solid #4B0082; /* Borda para destacar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
 }
 
 .pedido-detalhes h2 {
     margin-bottom: 10px;
-    color: #333;
+    color: #4B0082; /* Cor do título */
+    font-size: 1.8rem; /* Tamanho maior para o título */
+    text-transform: uppercase; /* Letras maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
 }
 
 .pedido-detalhes p {
     margin: 5px 0;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Tamanho um pouco maior */
     color: #555;
 }
 
+.pedido-detalhes p strong {
+    color: #4B0082; /* Destacar valores */
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    gap: 280px;
+}
+
 a {
-    display: inline-block;
     padding: 10px 20px;
     background-color: #4B0082;
+    max-width: 200px;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.1rem;
+    margin: 5px 0; /* Espaçamento entre os links */
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor */
 }
 
 a:hover {
-    background-color: #800080;
+    background-color: #800080; /* Cor mais escura ao passar o mouse */
 }
+

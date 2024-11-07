@@ -1,5 +1,6 @@
 @import url(../Header/header.css);
 @import url(../Footer/Footer.css);
+@import url(../botão-flutuante/botao.css);
 
 body {
     font-family: 'Arial', sans-serif;
@@ -16,20 +17,22 @@ body {
     padding: 20px;
 }
 
-#button-back{
+#button-back {
+    position: fixed;
     height: 60px;
     text-align: left;
     padding-left: 20px;
-    
-    img{
-        cursor: pointer;
-    }
+}
+
+#button-back img {
+    cursor: pointer;
 }
 
 h1 {
     text-align: center;
     color: #4B0082;
-    font-size: 2em;
+    font-size: 2.5em; /* Aumentado para maior destaque */
+    margin-bottom: 20px;
 }
 
 .filter-section {
@@ -50,6 +53,7 @@ h1 {
     border-radius: 5px;
     background-color: #ffffff;
     color: #333;
+    margin-left: 10px; /* Adicionando espaçamento entre o label e o select */
 }
 
 .order-list {
@@ -79,10 +83,11 @@ h1 {
     margin: 10px 0;
 }
 
-.order a {
-    text-decoration: none;
-    color: #4B0082;
-    font-weight: bold;
+.order .lanche {
+    background-color: #f9f9f9; /* Fundo diferente para itens de lanche */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px; /* Espaçamento acima do item de lanche */
 }
 
 .status-pendente {
@@ -91,10 +96,6 @@ h1 {
 
 .status-entregue {
     color: green;
-}
-
-.status-em-processamento {
-    color: orange;
 }
 
 .load-more {
@@ -120,3 +121,68 @@ h1 {
 #back {
     padding: 10px;
 }
+
+/* Novos estilos para exibir os lanches associados ao pedido */
+.lanche-titulo {
+    font-weight: bold;
+    color: #333;
+}
+
+.lanche-info {
+    color: #666; /* Cor mais clara para as informações do lanche */
+}
+
+.lanche {
+    display: flex; /* Exibir a imagem e informações lado a lado */
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.lanche-img {
+    width: 100px; /* Ajuste a largura da imagem do lanche */
+    height: auto; /* Manter a proporção da imagem */
+    border-radius: 5px; /* Borda arredondada para a imagem */
+    margin-right: 10px; /* Espaçamento entre a imagem e as informações */
+}
+
+.ver-mais-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4B0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ver-mais-btn:hover {
+    background-color: #800080;
+}
+
+.ver-menos-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4B0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ver-menos-btn:hover {
+    background-color: #800080;
+}
+
+.order-date {
+    font-size: 0.9rem; /* Tamanho menor */
+    color: #777; /* Cor mais clara para diferenciar */
+    margin-top: 0.5rem; /* Espaçamento acima da data */
+}
+

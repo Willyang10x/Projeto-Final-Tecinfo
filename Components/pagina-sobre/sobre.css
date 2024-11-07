@@ -10,6 +10,7 @@ body {
 }
 
 #button-back{
+    position: fixed;
     height: 60px;
     text-align: left;
     padding-left: 20px;
@@ -26,6 +27,7 @@ body {
 }
 
 h1 {
+    margin-bottom: 60px; /* Adicionado espaço abaixo do título */
     text-align: center;
     color: #4B0082;
 }
@@ -35,6 +37,11 @@ h1 {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 70px;
+}
+
+.sobre-section:hover{
+    transform: translateY(-10px); /* Leve elevação ao passar o mouse */
 }
 
 p {
