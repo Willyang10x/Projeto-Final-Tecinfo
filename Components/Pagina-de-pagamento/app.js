@@ -252,4 +252,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // Baixar o PDF com o nome do cliente
         doc.save(`pedido_${pedido.nome_titular}.pdf`);
     }
+    
 });
