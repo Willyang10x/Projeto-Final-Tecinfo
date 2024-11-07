@@ -63,10 +63,16 @@ p {
     color: #4B0082; /* Destacar valores */
 }
 
+#container{
+    display: flex;
+    justify-content: center;
+    gap: 280px;
+}
+
 a {
-    display: inline-block;
     padding: 10px 20px;
     background-color: #4B0082;
+    max-width: 200px;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;

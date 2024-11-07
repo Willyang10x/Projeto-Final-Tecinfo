@@ -189,7 +189,9 @@ button:hover {
     background-color:linear-gradient(90deg, rgb(218, 176, 253) 0%, rgba(133, 34, 212, 1) 100%);;
 }
 
-
+#total-pedido{
+    margin-top: 25px;
+}
 ul,ol {
     list-style: none;
 }
