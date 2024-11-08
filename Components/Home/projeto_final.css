@@ -98,11 +98,17 @@ body {
     padding: 20px;
     width: 200px; /* Mantenha ou ajuste conforme necessário */
     text-align: center;
+    position: relative; /* Para o posicionamento absoluto do botão */
+    height: 350px; /* Define uma altura fixa para que o botão fique na parte inferior */
 }
 
 .product img {
     width: 100%;
     border-radius: 10px;
+}
+
+.product .product-content {
+    margin-bottom: 50px; /* Espaço reservado para o botão */
 }
 
 .product p {
@@ -117,12 +123,17 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    position: absolute;
+    bottom: 20px; /* Alinha o botão ao fundo, ajustando conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .product button:hover {
     background-color: #7a15c2;
     color: #C8D7FF;
 }
+
 
 /* Media Query para ajustar o tamanho do produto em telas menores */
 @media (max-width: 600px) {

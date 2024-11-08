@@ -57,8 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const nomeCliente = document.getElementById('name').value;
 
-        // Gerar o número do pedido (por exemplo, com a data atual)
-        const numeroPedido = Date.now(); // Você pode mudar essa lógica para algo mais específico, se desejar
+        // Gerar o número do pedido com data e hora atual no formato "dd/MM/yyyy HH:mm:ss"
+        const dataAtual = new Date();
+        const numeroPedido = dataAtual.toLocaleDateString('pt-BR') + ' ' + dataAtual.toLocaleTimeString('pt-BR');
 
         const pedido = {
             numeroPedido,
@@ -162,29 +163,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     atualizarLanches();
     
-     function gerarPDFPedido(pedido) {
+    function gerarPDFPedido(pedido) {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         
-        // Logo da lanchonete no topo
         const logoUrl = "/assets/icons/logo.png";
         doc.addImage(logoUrl, 'PNG', 80, 10, 50, 25);
     
-        // Título do pedido
         doc.setFontSize(20);
-        doc.setTextColor("#4B0082"); // Cor roxa para o título
+        doc.setTextColor("#4B0082");
         doc.text("Detalhes do Pedido", doc.internal.pageSize.width / 2, 50, null, null, 'center');
         doc.setLineWidth(0.5);
         doc.line(20, 55, 190, 55);
     
-        // Dados do Pedido
         doc.setFontSize(12);
         doc.setTextColor("#333333");
-        doc.text(`Número do Pedido: ${pedido.numeroPedido}`, 20, 65);
+        doc.text(`Data e Hora: ${pedido.numeroPedido}`, 20, 65);
         doc.text(`Forma de Pagamento: ${pedido.forma_pagamento}`, 20, 75);
         doc.text(`Total: R$ ${pedido.total.toFixed(2).replace('.', ',')}`, 20, 85);
     
-        // Dados do Cliente
         doc.setFontSize(14);
         doc.setTextColor("#4B0082");
         doc.text("Dados do Cliente", 20, 95);
@@ -196,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `CPF: ${document.getElementById('cpf').value}`,
         ];
         
-        // Endereço de entrega
         const enderecoInfo = [
             `Endereço: ${document.getElementById('street').value}, Nº ${document.getElementById('number').value}`,
             `Bairro: ${document.getElementById('neighborhood').value}, Cidade: ${document.getElementById('city').value}`,
@@ -222,35 +218,18 @@ document.addEventListener('DOMContentLoaded', () => {
             yPosition += 10;
         });
     
-        // Itens do Pedido
         yPosition += 10;
         doc.setFontSize(14);
         doc.setTextColor("#4B0082");
-        doc.text("Lanches Selecionados:", 20, yPosition);
+        doc.text("Itens do Pedido", 20, yPosition);
         yPosition += 10;
         doc.setFontSize(12);
         doc.setTextColor("#333333");
-        pedido.lanches.forEach((lanche, index) => {
-            doc.text(
-                `${index + 1}. ${lanche.titulo} - R$ ${lanche.preco.toFixed(2).replace('.', ',')}`,
-                20,
-                yPosition
-            );
-            yPosition += 10;
+        pedido.lanches.forEach(lanche => {
+            doc.text(`- ${lanche.titulo} (R$ ${lanche.preco.toFixed(2).replace('.', ',')})`, 20, yPosition);
+            yPosition += 8;
         });
     
-        // Mensagem de agradecimento
-        yPosition += 20;
-        doc.setFontSize(14);
-        doc.setTextColor("#4B0082");
-        doc.text("Obrigado pela sua compra!", doc.internal.pageSize.width / 2, yPosition, null, null, 'center');
-        yPosition += 10;
-        doc.setFontSize(12);
-        doc.setTextColor("#333333");
-        doc.text("Aguardamos você para o próximo pedido!", doc.internal.pageSize.width / 2, yPosition, null, null, 'center');
-    
-        // Baixar o PDF com o nome do cliente
-        doc.save(`pedido_${pedido.nome_titular}.pdf`);
+        doc.save(`pedido_${pedido.nome_titular.replace(/\s/g, '_')}.pdf`);
     }
-    
 });

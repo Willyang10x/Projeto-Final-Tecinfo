@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .obrigado-container {
@@ -22,6 +23,12 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 20px;
+}
+
+.botao-voltar{
+    color: #4B0082;
+    background-color: #fff;
+    border: 1px solid #4B0082;
 }
 
 h1 {
@@ -66,7 +73,7 @@ p {
 #container{
     display: flex;
     justify-content: center;
-    gap: 280px;
+    gap: 314px;
 }
 
 a {
@@ -78,6 +85,7 @@ a {
     border-radius: 5px;
     font-size: 1.1rem;
     margin: 5px 0; /* Espaçamento entre os links */
+    border: 1px solid #4B0082;
     transition: background-color 0.3s ease; /* Transição suave na mudança de cor */
 }
 
@@ -85,3 +93,27 @@ a:hover {
     background-color: #800080; /* Cor mais escura ao passar o mouse */
 }
 
+.cursor-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(133, 34, 212, 1); /* Cor inicial do gradiente */
+    pointer-events: none;
+    animation: fadeOut 0.5s ease-out forwards;
+    transition: transform 0.3s ease;
+}
+
+/* Animação de desaparecimento */
+@keyframes fadeOut {
+    0% {
+        transform: scale(1);
+        background-color: rgba(80, 12, 134, 1); /* Cor final do gradiente */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5);
+        background-color: rgba(133, 34, 212, 0); /* Cor final transparente */
+        opacity: 0;
+    }
+}

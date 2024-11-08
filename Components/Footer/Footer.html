@@ -11,7 +11,7 @@
 <body>
     <footer class="footer-container">
         <div class="footer-logo">
-            <img src= "/Assets/icons/logo.png" alt="Logo da empresa" class="logo-img">
+            <img src="/Assets/icons/logo.png" alt="Logo da empresa" class="logo-img">
             <p class="company-desc">Colherada ou mordida: sabor único a cada escolha.</p>
         </div>
 
@@ -31,19 +31,32 @@
         </div>
 
         <div class="footer-subscribe">
-            <form action="/cadastrar-email" method="post">
+            <form id="subscribe-form">
                 <label for="email" class="subscribe-label">Receba nossas ofertas antes de todo mundo!</label>
                 <input type="email" id="email" name="email" placeholder="Seu email" required>
-                <button type="submit">Inscrever-se</button>
+                <button id="submit">Inscrever-se</button>
             </form>
+            <p id="confirmation-message" class="confirmation-message"></p> <!-- Mensagem de confirmação -->
         </div>
 
         <div class="footer-social">
             <p>Siga-nos nas redes sociais:</p>
             <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/+5583988688864" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Willyang10x/Projeto-Final-Tecinfo" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const subscribeForm = document.getElementById("subscribe-form");
+            const confirmationMessage = document.getElementById("confirmation-message");
+
+            subscribeForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Impede o envio real do formulário
+
+            });
+        });
+    </script>
 </body>
 </html>

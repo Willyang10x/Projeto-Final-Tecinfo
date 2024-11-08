@@ -39,3 +39,21 @@ function fetchLanches(searchTerm) {
             console.error('Erro ao buscar os lanches:', error);
         });
 }
+
+document.addEventListener('mousemove', (event) => {
+    // Cria um novo ponto para cada movimento do mouse
+    const dot = document.createElement('div');
+    dot.classList.add('cursor-dot');
+    
+    // Define a posição do ponto com base nas coordenadas do mouse
+    dot.style.left = `${event.pageX}px`;
+    dot.style.top = `${event.pageY}px`;
+
+    // Adiciona o ponto ao body
+    document.body.appendChild(dot);
+    
+    // Remove o ponto após um tempo para criar o efeito de cauda
+    setTimeout(() => {
+        dot.remove();
+    }, 500); // O tempo deve coincidir com o tempo da animação em CSS
+});
