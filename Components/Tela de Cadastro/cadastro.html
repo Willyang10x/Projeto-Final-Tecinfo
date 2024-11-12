@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/x-icon">
+    <title>Cadastrar-se</title>
+</head>
+<body>
+    <div class="register-container">
+        <div class="logo">
+            <img src="/assets/icons/logo.png" alt="Logo Açaiteria" class="logo-img">
+        </div>
+        <h1>Crie sua Conta</h1>
+        <p>Cadastre-se para aproveitar o melhor açaí da cidade!</p>
+        
+        <form id="registerForm">
+            <label for="name">Nome Completo</label>
+            <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Crie uma senha" required>
+
+            <label for="confirmPassword">Confirmar Senha</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        
+        <p class="login-text">Já tem uma conta? <a href="../Tela de Login/login.html">Faça login</a></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
