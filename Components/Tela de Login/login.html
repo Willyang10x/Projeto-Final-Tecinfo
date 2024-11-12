@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="/assets/icons/logo.png" alt="Logo Açaiteria" class="logo-img">
+        </div>
+        <h1>Bem-vindo de Volta!</h1>
+        <p>Aproveite o sabor do nosso açaí irresistível</p>
+        
+        <form id="loginForm">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="password">Senha</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                <img src="/assets/icons/Exibir-senha.png" alt="Mostrar senha" class="toggle-password" onclick="togglePassword('password')">
+            </div>
+
+            <a href="forgot-password.html" class="forgot-password">Esqueci minha senha</a>
+
+            <button type="submit">Entrar</button>
+        </form>
+        
+        <p class="register-text">Não tem uma conta? <a href="/Components/Tela de Cadastro/cadastro.html">Cadastre-se</a></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
