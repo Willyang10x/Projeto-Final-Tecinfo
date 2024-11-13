@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+
+
 /* Estilos Gerais */
 body {
     font-family: 'Poppins', sans-serif;
