@@ -25,7 +25,7 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
         
         if (response.ok) {
             alert('Cadastro realizado com sucesso!');
-            window.location.href = 'login.html';
+            window.location.href = '../Tela de Login/login.html';
         } else {
             alert('Erro no cadastro: ' + data.message);
         }
