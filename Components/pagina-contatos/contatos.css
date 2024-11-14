@@ -1,6 +1,31 @@
 @import url(../Header/header.css);
 @import url(../Footer/Footer.css);
 
+
+#success-message {
+    display: none; /* Começa escondida */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(-20px); /* Inicia ligeiramente fora da tela */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transição suave */
+    z-index: 1000; /* Para que fique acima de outros elementos */
+}
+
+/* Animação para exibir a mensagem */
+#success-message.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Volta ao local original */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #E3E7FF; /* Alterado para um azul mais claro */
