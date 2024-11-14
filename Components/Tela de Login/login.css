@@ -5,26 +5,6 @@
     box-sizing: border-box;
 }
 
-/* Estilo para a mensagem de erro */
-.error-message {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 10px;
-    display: none;  /* Inicialmente oculto */
-}
-.popup-message {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px;
-    background-color: #4B0082; /* Verde para sucesso */
-    color: white;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
-/* Estilos Gerais */
 body {
     font-family: 'Poppins', sans-serif;
     background: #C8D7FF;
@@ -34,6 +14,80 @@ body {
     height: 100vh;
     color: #333;
 }
+
+/* Base do pop-up */
+.popup-message {
+    position: fixed;
+    top: 20px;
+    right: -400px; /* Fora da tela inicialmente */
+    max-width: 340px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    transform: scale(0.95); /* Efeito de entrada */
+    transition: transform 0.4s ease, opacity 0.4s ease, right 0.4s ease;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(72, 72, 202, 0.9), rgba(29, 151, 108, 0.9));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    animation: pulsate 1.5s infinite alternate;
+}
+
+/* Diferenciação por tipo */
+.popup-error {
+    background: linear-gradient(135deg, rgba(238, 20, 20, 0.9), rgba(238, 64, 20, 0.9));
+}
+
+.popup-success {
+    background: linear-gradient(135deg, rgba(29, 151, 108, 0.9), rgba(72, 202, 172, 0.9));
+}
+
+/* Mostrar pop-up */
+.popup-show {
+    right: 20px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Ícone de tipo no pop-up */
+.popup-message i {
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+/* Animação de pulsação */
+@keyframes pulsate {
+    0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+    100% { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); }
+}
+
+/* Adiciona a seta estilizada */
+.popup-message::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 12px 10px 0;
+    border-color: transparent rgba(72, 72, 202, 0.9) transparent transparent;
+}
+
+.popup-error::before {
+    border-color: transparent rgba(238, 20, 20, 0.9) transparent transparent;
+}
+
+.popup-success::before {
+    border-color: transparent rgba(29, 151, 108, 0.9) transparent transparent;
+}
+
 
 /* Container de Login */
 .login-container {
@@ -45,7 +99,6 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
     animation: fadeIn 0.8s ease;
-    position: relative;
     overflow: hidden;
 }
 

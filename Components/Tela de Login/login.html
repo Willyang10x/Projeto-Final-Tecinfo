@@ -28,22 +28,24 @@
             <a href="forgot-password.html" class="forgot-password">Esqueci minha senha</a>
 
             <button type="submit">Entrar</button>
-
-            <!-- Mensagem de erro -->
-            <form id="loginForm">
-                <!-- Campos de entrada de e-mail e senha -->
-                <div id="form-error" style="color: red; display: none;"></div>
-            </form>
             
-            <div id="popup-logout" class="popup-message" style="display: none;">
-                Logout realizado com sucesso. Você foi desconectado.
-            </div>
-            
+            <div id="form-error" class="error-message"></div>
         </form>
         
         <p class="register-text">Não tem uma conta? <a href="/Components/Tela de Cadastro/cadastro.html">Cadastre-se</a></p>
     </div>
 
+    <!-- Pop-up de sucesso -->
+    <div id="popup-login-success" class="popup-message popup-success">
+        <i class="fa fa-check-circle"></i> <span>Login realizado com sucesso!</span>
+    </div>
+    
+    <!-- Pop-up de erro -->
+    <div id="popup-login-error" class="popup-message popup-error">
+        <i class="fa fa-exclamation-circle"></i> <span>Erro no login: Dados incorretos!</span>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
+
