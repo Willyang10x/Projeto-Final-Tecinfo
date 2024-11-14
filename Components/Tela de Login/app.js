@@ -1,41 +1,55 @@
-document.getElementById('loginForm').addEventListener('submit', async (event) => {
-  event.preventDefault();  // Impede o envio padrão do formulário
+window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
 
-  // Limpar mensagem de erro anterior
-  const formError = document.getElementById('form-error');
-  formError.textContent = '';
-  formError.style.display = 'none';
+    if (status === 'logout_sucesso') {
+        const popup = document.getElementById('popup-logout');
+        popup.style.display = 'block';  // Torna o pop-up visível
 
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  try {
-      const response = await fetch('http://localhost:3000/api/login', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })  // Envia os dados do login
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-          // Login bem-sucedido
-          alert('Login realizado com sucesso!');
-          localStorage.setItem('token', data.token);
-          window.location.href = '../Home/index.html';
-      } else {
-          // Exibe a mensagem de erro
-          formError.textContent = 'Erro no login: ' + data.message;
-          formError.style.display = 'block';
-      }
-  } catch (error) {
-      console.error('Erro ao tentar fazer login:', error);
-      formError.textContent = 'Erro ao tentar fazer login.';
-      formError.style.display = 'block';
-  }
+        // Oculta o pop-up após 3 segundos
+        setTimeout(() => {
+            popup.style.display = 'none';  // Oculta o pop-up
+        }, 3000);
+    }
 });
+
+
+document.getElementById('loginForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formError = document.getElementById('form-error');
+    formError.textContent = '';
+    formError.style.display = 'none';
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Login realizado com sucesso!');
+            localStorage.setItem('token', data.token);
+            window.location.href = '../Home/index.html';
+        } else {
+            formError.textContent = 'Erro no login: ' + data.message;
+            formError.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Erro ao tentar fazer login:', error);
+        formError.textContent = 'Erro ao tentar fazer login.';
+        formError.style.display = 'block';
+    }
+});
+
 
 // Função para mostrar ou ocultar a senha e alternar a imagem
 function togglePassword(fieldId) {
