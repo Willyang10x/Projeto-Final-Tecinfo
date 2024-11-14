@@ -58,9 +58,15 @@ document.addEventListener('mousemove', (event) => {
     }, 500); // O tempo deve coincidir com o tempo da animação em CSS
 });
 
-// Evento de Logout
 document.getElementById('logout').addEventListener('click', (event) => {
     event.preventDefault();
-    // Aqui você pode adicionar a lógica de logout, como limpar o token de autenticação ou dados de sessão
-    window.location.href = '/Components/Tela de Login/login.html'; // Redireciona para a página de login
+    localStorage.removeItem('token');
+
+    // Redireciona para a página de login com um parâmetro para mensagem de logout bem-sucedido
+    if (!localStorage.getItem('token')) {
+        window.location.href = '/Components/Tela de Login/login.html?status=logout_sucesso';
+    } else {
+        alert("Erro ao desconectar.");
+    }
 });
+

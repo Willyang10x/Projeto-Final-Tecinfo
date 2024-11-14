@@ -98,3 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao buscar lanches:', error);
         }
     }
+
+    // Verificação do token ao carregar a página
+window.addEventListener('load', () => {
+    const token = localStorage.getItem('token');
+    
+    // Se o token não estiver presente, redireciona para a página de login
+    if (!token) {
+        alert("Token expirado. Por favor, faça login novamente.");
+        window.location.href = '/Components/Tela de Login/login.html';
+    }
+});
