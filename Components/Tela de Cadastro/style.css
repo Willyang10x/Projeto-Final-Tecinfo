@@ -11,6 +11,71 @@
     margin-top: 4px;
 }
 
+/* Base do pop-up */
+.popup-message {
+    position: fixed;
+    top: 20px;
+    right: -400px; /* Fora da tela inicialmente */
+    max-width: 340px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    transform: scale(0.95); /* Efeito de entrada */
+    transition: transform 0.4s ease, opacity 0.4s ease, right 0.4s ease;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(72, 72, 202, 0.9), rgba(29, 151, 108, 0.9));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+/* Diferenciação por tipo */
+.popup-error {
+    background: linear-gradient(135deg, rgba(238, 20, 20, 0.9), rgba(238, 64, 20, 0.9));
+}
+
+.popup-success {
+    background: linear-gradient(135deg, rgba(29, 151, 108, 0.9), rgba(72, 202, 172, 0.9));
+}
+
+/* Mostrar pop-up */
+.popup-show {
+    right: 20px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Ícone de tipo no pop-up */
+.popup-message i {
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+/* Adiciona a seta estilizada */
+.popup-message::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 12px 10px 0;
+    border-color: transparent rgba(72, 72, 202, 0.9) transparent transparent;
+}
+
+.popup-error::before {
+    border-color: transparent rgba(238, 20, 20, 0.9) transparent transparent;
+}
+
+.popup-success::before {
+    border-color: transparent rgba(29, 151, 108, 0.9) transparent transparent;
+}
 
 
 /* Estilos Gerais */
