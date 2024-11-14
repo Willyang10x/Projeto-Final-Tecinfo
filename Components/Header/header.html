@@ -16,15 +16,27 @@
             <li><a href="/Components/Home/index.html">Home</a></li>
             <li><a href="/Components/pagina-sobre/sobre.html">Sobre</a></li>
             <li><a href="/Components/pagina-contatos/contatos.html">Contatos</a></li>
-            <li><a href="/Components/Historico-de-compra/Historico.html">Historico</a></li>
+            <li><a href="/Components/Historico-de-compra/Historico.html">Histórico</a></li>
         </nav>
 
+        <!-- Barra de Pesquisa -->
         <div class="barra-de-pesquisa">
             <input type="text" id="search-input" placeholder="Search..." />
             <button id="search-button">🔍</button>
         </div>
+
+        <!-- Área do Usuário com Menu Suspenso -->
+        <div class="user-area">
+            <img src="/assets/icons/logo.png" alt="Usuário" class="user-icon">
+            <div class="user-menu">
+                <a href="#">Perfil</a>
+                <a href="#">Configurações</a>
+                <a href="#" id="logout">Sair</a>
+            </div>
+        </div>
     </header>
 
     <script src="search.js"></script>
+    <script src="header.js"></script>
 </body>
 </html>

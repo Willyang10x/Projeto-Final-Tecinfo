@@ -57,3 +57,10 @@ document.addEventListener('mousemove', (event) => {
         dot.remove();
     }, 500); // O tempo deve coincidir com o tempo da animação em CSS
 });
+
+// Evento de Logout
+document.getElementById('logout').addEventListener('click', (event) => {
+    event.preventDefault();
+    // Aqui você pode adicionar a lógica de logout, como limpar o token de autenticação ou dados de sessão
+    window.location.href = '/Components/Tela de Login/login.html'; // Redireciona para a página de login
+});

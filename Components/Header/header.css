@@ -1,14 +1,17 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
 }
 
+/* Estilo do Header */
 header {
     background: linear-gradient(90deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
     padding: 5px 0;
     justify-content: space-evenly;
-    gap: 300px;
+    gap: 170px;
     display: flex;
+    align-items: center;
 }
 
 .logo img {
@@ -33,6 +36,7 @@ header {
     font-size: 18px;
 }
 
+/* Barra de Pesquisa */
 .barra-de-pesquisa {
     display: flex;
     align-items: center;
@@ -53,35 +57,70 @@ header {
     cursor: pointer;
 }
 
-/* Media Query para ajustar o tamanho do resultado em telas menores */
-@media (max-width: 600px) {
-    #resultados div {
-        width: 90%;
-        max-width: 180px;
-    }
+/* Estilos da Área do Usuário */
+.user-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.cursor-dot {
-    position: absolute;
-    width: 15px;
-    height: 15px;
+.user-icon {
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
-    background-color: rgba(133, 34, 212, 1); /* Cor inicial do gradiente */
-    pointer-events: none;
-    animation: fadeOut 0.5s ease-out forwards;
+    cursor: pointer;
     transition: transform 0.3s ease;
+    background-color: #ffffff;
 }
 
-/* Animação de desaparecimento */
-@keyframes fadeOut {
-    0% {
-        transform: scale(1);
-        background-color: rgba(80, 12, 134, 1); /* Cor final do gradiente */
-        opacity: 1;
+.user-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Menu Suspenso */
+.user-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 150px;
+    z-index: 1000;
+}
+
+.user-area:hover .user-menu {
+    display: block;
+}
+
+.user-menu a {
+    display: block;
+    padding: 10px;
+    color: #4B0082;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.user-menu a:hover {
+    background-color: #f2f2f2;
+}
+
+/* Media Query para Responsividade */
+@media (max-width: 600px) {
+    #nav-links li {
+        font-size: 16px;
     }
-    100% {
-        transform: scale(0.5);
-        background-color: rgba(133, 34, 212, 0); /* Cor final transparente */
-        opacity: 0;
+
+    .barra-de-pesquisa input {
+        width: 120px;
+    }
+
+    .user-icon {
+        width: 35px;
+        height: 35px;
     }
 }
