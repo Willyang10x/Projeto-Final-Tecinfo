@@ -1,3 +1,93 @@
+// Função para adicionar o evento de blur para cada campo
+function addBlurEventToField(fieldId, validationFunction, errorMessageId, popUpMessage, checkEmail = false) {
+    const field = document.getElementById(fieldId);
+    field.addEventListener('blur', async () => {
+        const errorElement = document.getElementById(errorMessageId);
+        const isValid = validationFunction(field.value);
+
+        if (checkEmail) {  // Verifica se o campo é o de email
+            const email = field.value;
+            const emailExists = await checkIfEmailExists(email); // Verifica se o email já existe no banco
+            if (emailExists) {
+                showPopup('O email já está em uso.', false);
+                return;
+            }
+        }
+
+        if (!isValid) {
+            if (errorMessageId !== 'nameError') {  // Para os outros campos, exibe apenas o pop-up
+                showPopup(popUpMessage, false);
+            }
+            if (errorMessageId === 'nameError') {  // Para o nome, mostra o erro abaixo do campo
+                errorElement.textContent = popUpMessage;
+                errorElement.style.color = 'red';
+            }
+        } else {
+            if (errorMessageId === 'nameError') {  // Limpa o erro para o nome
+                errorElement.textContent = '';
+            }
+        }
+    });
+}
+
+// Função para verificar se o email já está registrado
+async function checkIfEmailExists(email) {
+    try {
+        const response = await fetch('http://localhost:3000/api/check-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+        return data.exists; // Supondo que a resposta tenha um campo 'exists' indicando se o email já existe
+    } catch (error) {
+        console.error('Erro ao verificar o email:', error);
+        showPopup('Erro ao verificar o email.', false);
+        return false;
+    }
+}
+
+// Definir as mensagens de erro para cada campo
+const errorMessages = {
+    'name': 'O nome deve conter apenas letras e ter pelo menos duas palavras.',
+    'email': 'Por favor, insira um email válido.',
+    'password': 'A senha deve ter ao menos 8 caracteres, uma letra maiúscula, um número e um caractere especial.',
+    'confirmPassword': 'As senhas não coincidem. Por favor, verifique e tente novamente.'
+};
+
+// Função para validar o nome
+function isValidName(name) {
+    const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+    return namePattern.test(name);
+}
+
+// Função para validar o email
+function isValidEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+// Função para validar a senha
+function isValidPassword(password) {
+    const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return passwordPattern.test(password);
+}
+
+// Função para validar as senhas coincidentes
+function arePasswordsMatching(password, confirmPassword) {
+    return password === confirmPassword;
+}
+
+// Adicionando os eventos de blur para cada campo
+addBlurEventToField('name', isValidName, 'nameError', 'O nome deve conter apenas letras e ter pelo menos duas palavras.');
+addBlurEventToField('email', isValidEmail, 'emailError', 'Por favor, insira um email válido.', true); // Verifica se o email já existe
+addBlurEventToField('password', isValidPassword, 'passwordError', 'A senha deve ter ao menos 8 caracteres, uma letra maiúscula, um número e um caractere especial.');
+addBlurEventToField('confirmPassword', (value) => arePasswordsMatching(document.getElementById('password').value, value), 'confirmPasswordError', 'As senhas não coincidem. Por favor, verifique e tente novamente.');
+
+// Evento de submit para validar todos os campos
 document.getElementById('registerForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -7,25 +97,6 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     let hasError = false;
-
-    // Função para validar o nome: permite apenas letras e exige pelo menos duas palavras
-    function isValidName(name) {
-        const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
-        return namePattern.test(name);
-    }
-
-    // Função para validar o email
-    function isValidEmail(email) {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailPattern.test(email);
-    }
-
-    // Função para validar a senha
-    function isValidPassword(password) {
-        // Exige ao menos 8 caracteres, uma letra maiúscula, um número e um caractere especial
-        const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).{8,}$/;
-        return passwordPattern.test(password);
-    }
 
     // Validação do nome
     const nameErrorElement = document.getElementById('nameError');
@@ -38,19 +109,19 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     }
 
     // Validação do email
-    if (!isValidEmail(email) && !hasError) { // Só exibe o pop-up de erro se ainda não houver outro erro
+    if (!isValidEmail(email) && !hasError) {
         showPopup('Por favor, insira um email válido.', false);
         hasError = true;
     }
 
     // Validação da senha
-    if (!isValidPassword(password) && !hasError) { // Só exibe o pop-up de erro se ainda não houver outro erro
+    if (!isValidPassword(password) && !hasError) {
         showPopup('A senha deve ter ao menos 8 caracteres, uma letra maiúscula, um número e um caractere especial.', false);
         hasError = true;
     }
 
     // Verificação de senhas coincidentes
-    if (password !== confirmPassword && !hasError) {  // Só exibe o pop-up de erro se ainda não houver outro erro
+    if (password !== confirmPassword && !hasError) {
         showPopup('As senhas não coincidem. Por favor, verifique e tente novamente.', false);
         hasError = true;
     }
