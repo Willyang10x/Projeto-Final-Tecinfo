@@ -5,7 +5,7 @@ function addBlurEventToField(fieldId, validationFunction, errorMessageId, popUpM
         const errorElement = document.getElementById(errorMessageId);
         const isValid = validationFunction(field.value);
 
-        if (checkEmail) {  // Verifica se o campo é o de email
+        if (checkEmail) { // Verifica se o campo é o de email
             const email = field.value;
             const emailExists = await checkIfEmailExists(email); // Verifica se o email já existe no banco
             if (emailExists) {
@@ -15,15 +15,15 @@ function addBlurEventToField(fieldId, validationFunction, errorMessageId, popUpM
         }
 
         if (!isValid) {
-            if (errorMessageId !== 'nameError') {  // Para os outros campos, exibe apenas o pop-up
+            if (errorMessageId !== 'nameError') { // Para os outros campos, exibe apenas o pop-up
                 showPopup(popUpMessage, false);
             }
-            if (errorMessageId === 'nameError') {  // Para o nome, mostra o erro abaixo do campo
+            if (errorMessageId === 'nameError') { // Para o nome, mostra o erro abaixo do campo
                 errorElement.textContent = popUpMessage;
                 errorElement.style.color = 'red';
             }
         } else {
-            if (errorMessageId === 'nameError') {  // Limpa o erro para o nome
+            if (errorMessageId === 'nameError') { // Limpa o erro para o nome
                 errorElement.textContent = '';
             }
         }
@@ -144,7 +144,9 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
 
         if (response.ok) {
             showPopup('Cadastro realizado com sucesso!', true);
-            window.location.href = `/Components/Tela de Login/login.html?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+            setTimeout(() => {
+                window.location.href = `/Components/Tela de Login/login.html?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+            }, 3000); // Aguarda o tempo do pop-up antes de redirecionar
         } else if (data.message === 'Email já cadastrado') {
             showPopup('O email já está em uso.', false);
         } else {
@@ -181,6 +183,7 @@ function showPopup(message, isSuccess) {
     }, 3000);
 }
 
+
 // Função para mostrar ou ocultar a senha e alternar a imagem
 function togglePassword(fieldId) {
     const passwordInput = document.getElementById(fieldId);
@@ -196,3 +199,22 @@ function togglePassword(fieldId) {
         toggleIcon.alt = 'Mostrar senha';
     }
 }
+
+
+document.addEventListener('mousemove', (event) => {
+    // Cria um novo ponto para cada movimento do mouse
+    const dot = document.createElement('div');
+    dot.classList.add('cursor-dot');
+    
+    // Define a posição do ponto com base nas coordenadas do mouse
+    dot.style.left = `${event.pageX}px`;
+    dot.style.top = `${event.pageY}px`;
+
+    // Adiciona o ponto ao body
+    document.body.appendChild(dot);
+    
+    // Remove o ponto após um tempo para criar o efeito de cauda
+    setTimeout(() => {
+        dot.remove();
+    }, 500); // O tempo deve coincidir com o tempo da animação em CSS
+});

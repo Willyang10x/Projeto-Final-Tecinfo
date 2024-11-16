@@ -65,5 +65,38 @@ function showPopup(message, type) {
     popup.classList.add('popup-show');
     setTimeout(() => {
         popup.classList.remove('popup-show');
-    }, 3000); // Exibe por 5 segundos
+    }, 3000); // Exibe por 3 segundos
 }
+
+// Adicionando o evento blur para mostrar erro no pop-up
+document.getElementById('email').addEventListener('blur', () => {
+    const emailField = document.getElementById('email');
+    if (!emailField.value) {
+        showPopup('Por favor, preencha o campo de email.', 'error');
+    }
+});
+
+document.getElementById('password').addEventListener('blur', () => {
+    const passwordField = document.getElementById('password');
+    if (!passwordField.value) {
+        showPopup('Por favor, preencha o campo de senha.', 'error');
+    }
+});
+
+document.addEventListener('mousemove', (event) => {
+    // Cria um novo ponto para cada movimento do mouse
+    const dot = document.createElement('div');
+    dot.classList.add('cursor-dot');
+    
+    // Define a posição do ponto com base nas coordenadas do mouse
+    dot.style.left = `${event.pageX}px`;
+    dot.style.top = `${event.pageY}px`;
+
+    // Adiciona o ponto ao body
+    document.body.appendChild(dot);
+    
+    // Remove o ponto após um tempo para criar o efeito de cauda
+    setTimeout(() => {
+        dot.remove();
+    }, 500); // O tempo deve coincidir com o tempo da animação em CSS
+});
