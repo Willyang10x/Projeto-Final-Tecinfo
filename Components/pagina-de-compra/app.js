@@ -105,3 +105,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// Verificação do token ao carregar a página
+window.addEventListener('load', () => {
+    const token = localStorage.getItem('token');
+    
+    // Se o token não estiver presente, exibe o pop-up de erro e redireciona para a página de login
+    if (!token) {
+        showErrorPopup("Token expirado. Por favor, faça login novamente.", () => {
+            window.location.href = '/Components/Tela de Login/login.html';
+        });
+    }
+});
+
+// Função para exibir o pop-up de erro
+function showErrorPopup(message, callback) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-message', 'popup-error');
+    popup.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('popup-show');
+    }, 100);
+
+    setTimeout(() => {
+        popup.classList.remove('popup-show');
+        setTimeout(() => {
+            popup.remove();
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }, 400);
+    }, 3000);
+}
+
+
