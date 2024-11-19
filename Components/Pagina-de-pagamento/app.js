@@ -79,26 +79,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(pedido)
             });
-
+        
             if (response.ok) {
-                alert('Pedido finalizado com sucesso!');
-                localStorage.setItem("pedidoConcluido", JSON.stringify(pedido)); // Salva o pedido com número gerado
-                localStorage.removeItem('lanchesSelecionados');
-                
-                gerarPDFPedido(pedido);
-                
-                window.location.href = '/Components/pagina-de-obrigado/pagina-de-obrigado.html';
+                showSuccessPopup('Pedido finalizado com sucesso!', () => {
+                    localStorage.setItem("pedidoConcluido", JSON.stringify(pedido));
+                    localStorage.removeItem('lanchesSelecionados');
+                    gerarPDFPedido(pedido);
+                    window.location.href = '/Components/pagina-de-obrigado/pagina-de-obrigado.html';
+                });
             } else {
                 const errorData = await response.json();
-                alert('Erro ao finalizar o pedido: ' + errorData.message);
+                showErrorPopup('Erro ao finalizar o pedido: ' + errorData.message);
             }
         } catch (error) {
             console.error('Erro na requisição:', error);
-            alert('Erro ao finalizar o pedido. Tente novamente.');
+            showErrorPopup('Erro ao finalizar o pedido. Tente novamente.');
         } finally {
             pedidoEmAndamento = false;
         }
     });
+
+    // Função para exibir o pop-up de sucesso
+function showSuccessPopup(message, callback) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-message', 'popup-success');
+    popup.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('popup-show');
+    }, 100);
+
+    setTimeout(() => {
+        popup.classList.remove('popup-show');
+        setTimeout(() => {
+            popup.remove();
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }, 400);
+    }, 3000);
+}
+
 
     function atualizarLanches() {
         let total = 0;
