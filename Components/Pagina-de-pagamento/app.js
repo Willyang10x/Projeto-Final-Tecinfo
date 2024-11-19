@@ -18,6 +18,106 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Erro ao carregar o footer:', error));
 
+
+// Função para exibir o pop-up de erro
+function showErrorPopup(message, callback) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-message', 'popup-error');
+    popup.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('popup-show');
+    }, 100);
+
+    setTimeout(() => {
+        popup.classList.remove('popup-show');
+        setTimeout(() => {
+            popup.remove();
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }, 400);
+    }, 3000);
+}
+
+// Função para validar o nome
+function isValidName(name) {
+    const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+    return namePattern.test(name);
+}
+
+// Função para validar o email
+function isValidEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+// Função para validar o campo
+function validarCampo(campo, mensagemErro, isValidFunction, errorElement) {
+    let hasError = false;
+
+    if (!campo.value.trim() || (isValidFunction && !isValidFunction(campo.value))) {
+        showErrorPopup(mensagemErro, () => {
+            campo.focus();
+        });
+        hasError = true;
+    }
+
+    if (errorElement) {
+        if (isValidFunction && !isValidFunction(campo.value)) {
+            errorElement.textContent = mensagemErro;
+            errorElement.style.color = 'red';
+        } else {
+            errorElement.textContent = ''; // Limpa a mensagem de erro se o campo for válido
+        }
+    }
+
+    return hasError;
+}
+
+// Selecionando os campos e elementos de erro
+const nameField = document.getElementById('name');
+const emailField = document.getElementById('email');
+const cpfField = document.getElementById('cpf');
+const cepField = document.getElementById('cep');
+const numberField = document.getElementById('number');
+const streetField = document.getElementById('street');
+const neighborhoodField = document.getElementById('neighborhood');
+const cityField = document.getElementById('city');
+
+// Elementos de erro
+const nameErrorElement = document.getElementById('nameError');
+const emailErrorElement = document.getElementById('emailError');
+
+// Validação ao clicar fora (blur)
+nameField.addEventListener('blur', () => {
+    let hasError = validarCampo(nameField, 'Por favor, preencha o campo "Nome Completo"', isValidName, nameErrorElement);
+});
+emailField.addEventListener('blur', () => {
+    let hasError = validarCampo(emailField, 'Por favor, preencha o campo "E-mail".', isValidEmail, emailErrorElement);
+});
+cpfField.addEventListener('blur', () => {
+    let hasError = validarCampo(cpfField, 'Por favor, preencha o campo "CPF".');
+});
+cepField.addEventListener('blur', () => {
+    let hasError = validarCampo(cepField, 'Por favor, preencha o campo "CEP".');
+});
+numberField.addEventListener('blur', () => {
+    let hasError = validarCampo(numberField, 'Por favor, preencha o campo "Número".');
+});
+streetField.addEventListener('blur', () => {
+    let hasError = validarCampo(streetField, 'Por favor, preencha o campo "Rua".');
+});
+neighborhoodField.addEventListener('blur', () => {
+    let hasError = validarCampo(neighborhoodField, 'Por favor, preencha o campo "Bairro".');
+});
+cityField.addEventListener('blur', () => {
+    let hasError = validarCampo(cityField, 'Por favor, preencha o campo "Cidade".');
+});
+
+
     const lanchesSelecionados = JSON.parse(localStorage.getItem('lanchesSelecionados')) || [];
     const totalElement = document.getElementById('total-pedido');
     const lanchesList = document.getElementById('lanches-selecionados');
@@ -29,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const camposObrigatorios = document.querySelectorAll('.coletar-dados[required]');
         for (const campo of camposObrigatorios) {
             if (!campo.value.trim()) {
-                alert(`Por favor, preencha o campo: ${campo.previousElementSibling.innerText}`);
+                showErrorPopup(`Por favor, preencha o campo "${campo.previousElementSibling.innerText}".`);
                 campo.focus();
                 return;
             }
@@ -37,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
         if (!selectedPaymentMethod) {
-            alert('Selecione um método de pagamento.');
+            showErrorPopup('Selecione um método de pagamento.');
             return;
         }
 
@@ -48,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardCvv = document.getElementById('card-cvv').value;
 
             if (!cardName || !cardNumber || !cardExpiry || !cardCvv) {
-                alert('Por favor, preencha todos os campos do cartão.');
+                showErrorPopup('Por favor, preencha todos os campos do cartão.');
                 return;
             }
         }
