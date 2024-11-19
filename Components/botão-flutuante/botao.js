@@ -39,7 +39,7 @@ async function fetchLancheDetails(id) {
             localStorage.setItem('lanchesSelecionados', JSON.stringify(lanchesSelecionados));
 
             updateCartCount(); // Atualiza a contagem do carrinho
-            alert("Lanche adicionado ao carrinho!"); // Mensagem de confirmação
+            
         });
     } catch (error) {
         console.error('Erro ao buscar detalhes do lanche:', error);

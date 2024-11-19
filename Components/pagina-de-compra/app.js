@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 // Verificação do token ao carregar a página
 window.addEventListener('load', () => {
     const token = localStorage.getItem('token');
@@ -120,27 +121,24 @@ window.addEventListener('load', () => {
 });
 
 // Função para exibir o pop-up de erro
-function showErrorPopup(message, callback) {
-    const popup = document.createElement('div');
-    popup.classList.add('popup-message', 'popup-error');
-    popup.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+ function mostrarPopup(mensagem, tipo) {
+        const popup = document.createElement('div');
+        popup.className = `popup-message popup-${tipo}`;
+        popup.textContent = mensagem;
 
-    document.body.appendChild(popup);
+        document.body.appendChild(popup);
 
-    setTimeout(() => {
-        popup.classList.add('popup-show');
-    }, 100);
-
-    setTimeout(() => {
-        popup.classList.remove('popup-show');
         setTimeout(() => {
-            popup.remove();
-            if (typeof callback === 'function') {
-                callback();
-            }
-        }, 400);
-    }, 3000);
-}
+            popup.classList.add('popup-show');
+        }, 100);
+
+        setTimeout(() => {
+            popup.classList.remove('popup-show');
+            setTimeout(() => {
+                popup.remove();
+            }, 400);
+        }, 3000);
+    }
 
 
 document.addEventListener('mousemove', (event) => {
