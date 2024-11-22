@@ -224,3 +224,34 @@ document.addEventListener('mousemove', (event) => {
         dot.remove();
     }, 500); // O tempo deve coincidir com o tempo da animação em CSS
 });
+
+// Função para atualizar os pedidos no frontend a cada 10 segundos
+function updatePedidosStatus() {
+    // Faz uma requisição para o backend para atualizar o status dos pedidos
+    fetch('http://localhost:3000/atualizar-status', { // Ajuste a URL para o seu servidor backend
+      method: 'POST',
+      body: JSON.stringify({ status_pedido: 'entregue' }), // Status que você deseja atualizar
+      headers: { 'Content-Type': 'application/json' } // Cabeçalho informando que o corpo é JSON
+    })
+      .then(response => {
+        if (!response.ok) { // Verifica se a resposta foi bem-sucedida
+          throw new Error('Erro na requisição');
+        }
+        return response.json(); // Converte a resposta para JSON
+      })
+      .then(data => {
+        console.log(data.message); // Exibe a mensagem de sucesso
+        // Recarregar os pedidos após a atualização
+        fetchPedidos(clienteId); 
+      })
+      .catch(error => {
+        console.error('Erro ao atualizar status dos pedidos:', error);
+      });
+  }
+  
+  // Definir um intervalo para atualizar os pedidos a cada 10 segundos
+  setInterval(() => {
+    updatePedidosStatus();
+  }, 10000); // 10 segundos
+  
+  

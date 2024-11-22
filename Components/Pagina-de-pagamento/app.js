@@ -157,20 +157,20 @@ cityField.addEventListener('blur', () => {
 
         const nomeCliente = document.getElementById('name').value;
 
-        // Gerar o número do pedido com data e hora atual no formato "dd/MM/yyyy HH:mm:ss"
         const dataAtual = new Date();
         const numeroPedido = dataAtual.toLocaleDateString('pt-BR') + ' ' + dataAtual.toLocaleTimeString('pt-BR');
 
         const pedido = {
             numeroPedido,
-            cliente_id: 1,
+            cliente_id: 1, // Pode ser o ID do cliente autenticado
             total: lanchesSelecionados.reduce((acc, lanche) => acc + lanche.preco, 0),
             forma_pagamento: selectedPaymentMethod.value,
             nome_titular: nomeCliente,
             numero_cartao: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-number').value : null,
             validade_cartao: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-expiry').value : null,
             cvv: selectedPaymentMethod.value === 'cartao' ? document.getElementById('card-cvv').value : null,
-            lanches: lanchesSelecionados
+            lanches: lanchesSelecionados,
+            status: 'pendente' // Status inicial
         };
 
         try {
@@ -179,8 +179,18 @@ cityField.addEventListener('blur', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(pedido)
             });
-        
+
             if (response.ok) {
+                // Atualizando o status do pedido para "concluído" após a finalização
+                const pedidoData = await response.json();
+                const pedidoId = pedidoData.id; // O id do pedido retornado pela API
+
+                await fetch(`http://localhost:3000/pedidos/${pedidoId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'concluído' })
+                });
+
                 showSuccessPopup('Pedido finalizado com sucesso!', () => {
                     localStorage.setItem("pedidoConcluido", JSON.stringify(pedido));
                     localStorage.removeItem('lanchesSelecionados');
@@ -198,6 +208,7 @@ cityField.addEventListener('blur', () => {
             pedidoEmAndamento = false;
         }
     });
+
 
     // Função para exibir o pop-up de sucesso
 function showSuccessPopup(message, callback) {
