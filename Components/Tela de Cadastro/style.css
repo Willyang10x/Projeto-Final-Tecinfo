@@ -8,10 +8,14 @@
 }
 
 .error-message {
+    display: block;
     color: red;
-    font-size: 0.9em;
-    margin-top: 4px;
+    font-size: 14px;
+    margin-top: 2px;
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-left: 2; /* Remove qualquer margem à esquerda se existir */
 }
+
 
 /* Base do pop-up */
 .popup-message {
@@ -196,6 +200,7 @@ input:focus {
 
 /* Botão de Cadastro */
 button {
+    margin-top: 15px;
     width: 100%;
     padding: 12px;
     background-color: #8A2BE2;
