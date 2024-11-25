@@ -15,6 +15,27 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    let hasError = false;
+
+    // Validação do email
+    if (!email) {
+        document.getElementById('email-error').textContent = 'Por favor, preencha o campo de e-mail.';
+        hasError = true;
+    } else {
+        document.getElementById('email-error').textContent = ''; // Limpa a mensagem de erro se o campo estiver preenchido
+    }
+
+    // Validação da senha
+    if (!password) {
+        document.getElementById('password-error').textContent = 'Por favor, preencha o campo de senha.';
+        hasError = true;
+    } else {
+        document.getElementById('password-error').textContent = ''; // Limpa a mensagem de erro se o campo estiver preenchido
+    }
+
+    // Se houver erro, não prossegue com o login
+    if (hasError) return;
+
     try {
         const response = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
@@ -72,14 +93,14 @@ function showPopup(message, type) {
 document.getElementById('email').addEventListener('blur', () => {
     const emailField = document.getElementById('email');
     if (!emailField.value) {
-        showPopup('Por favor, preencha o campo de email.', 'error');
+        document.getElementById('email-error').textContent = 'Por favor, preencha o campo de email.';
     }
 });
 
 document.getElementById('password').addEventListener('blur', () => {
     const passwordField = document.getElementById('password');
     if (!passwordField.value) {
-        showPopup('Por favor, preencha o campo de senha.', 'error');
+        document.getElementById('password-error').textContent = 'Por favor, preencha o campo de senha.';
     }
 });
 

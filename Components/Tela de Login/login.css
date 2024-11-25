@@ -17,6 +17,15 @@ body {
     color: #333;
 }
 
+.error-message {
+    display: block;
+    color: red;
+    font-size: 14px;
+    margin-top: 2px;
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-left: 2; /* Remove qualquer margem à esquerda se existir */
+}
+
 /* Base do pop-up */
 .popup-message {
     position: fixed;
@@ -197,7 +206,7 @@ input:focus {
 .forgot-password {
     display: block;
     margin-top: -10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: right;
     color: #8A2BE2;
     font-size: 0.9rem;
@@ -212,6 +221,7 @@ input:focus {
 
 /* Botão de Login */
 button {
+    margin-top: 15px;
     width: 100%;
     padding: 12px;
     background-color: #8A2BE2;

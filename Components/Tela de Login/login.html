@@ -18,19 +18,22 @@
         <form id="loginForm">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-
+            <div id="email-error" class="error-message"></div> <!-- Mensagem de erro para o email -->
+        
             <label for="password">Senha</label>
             <div class="password-wrapper">
                 <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
                 <img src="/assets/icons/Exibir-senha.png" alt="Mostrar senha" class="toggle-password" onclick="togglePassword('password')">
             </div>
-
             <a href="forgot-password.html" class="forgot-password">Esqueci minha senha</a>
-
+            
+            <div id="password-error" class="error-message"></div> <!-- Mensagem de erro para a senha -->
+        
             <button type="submit">Entrar</button>
             
             <div id="form-error" class="error-message"></div>
         </form>
+        
         
         <p class="register-text">Não tem uma conta? <a href="/Components/Tela de Cadastro/cadastro.html">Cadastre-se</a></p>
     </div>
