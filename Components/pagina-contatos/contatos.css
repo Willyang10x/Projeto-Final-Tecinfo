@@ -60,7 +60,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #E3E7FF; /* Alterado para um azul mais claro */
+    background-color: #C8D7FF; /* Alterado para um azul mais claro */
     color: #333;
     margin: 0;
     padding: 0;
@@ -70,8 +70,7 @@ body {
     margin-top: 70px;
     position: fixed;
     height: 60px;
-    display: flex; /* Flexbox para centralizar o conteúdo */
-    align-items: center; /* Alinhamento vertical */
+    text-align: left;
     padding-left: 20px;
 }
 

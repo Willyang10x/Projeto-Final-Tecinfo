@@ -45,7 +45,15 @@ body {
     margin-top: 40px;
 }
 
+
+.category-item:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+
 .category-item {
+    transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
 }
 
@@ -101,6 +109,11 @@ body {
     text-align: center;
     position: relative; /* Para o posicionamento absoluto do botão */
     height: 350px; /* Define uma altura fixa para que o botão fique na parte inferior */
+    transition: transform 0.3s ease; /* Suaviza a animação */
+}
+
+.product:hover {
+    transform: scale(1.05);
 }
 
 .product img {
@@ -125,15 +138,17 @@ body {
     cursor: pointer;
     border-radius: 5px;
     position: absolute;
-    bottom: 20px; /* Alinha o botão ao fundo, ajustando conforme necessário */
+    bottom: 20px; /* Alinha o botão ao fundo */
     left: 50%;
     transform: translateX(-50%);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .product button:hover {
     background-color: #7a15c2;
     color: #C8D7FF;
 }
+
 
 .popup-message {
     position: fixed;

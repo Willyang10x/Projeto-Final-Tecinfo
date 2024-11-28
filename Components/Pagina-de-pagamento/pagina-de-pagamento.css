@@ -179,10 +179,15 @@ button:hover {
 }
 
 .lanche-img {
+    transition: transform 0.3s ease; /* Suaviza a animação */
     width: 100px; /* Ajuste a largura da imagem do lanche */
     height: auto; /* Manter a proporção da imagem */
     border-radius: 5px; /* Borda arredondada para a imagem */
     margin-right: 10px; /* Espaçamento entre a imagem e as informações */
+}
+
+.lanche-img:hover {
+    transform: scale(1.05);
 }
 
 .button-close {
