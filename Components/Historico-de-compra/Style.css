@@ -177,7 +177,12 @@ h1 {
     margin-top: 10px;
 }
 
+.lanche-img:hover {
+    transform: scale(1.05);
+}
+
 .lanche-img {
+    transition: transform 0.3s ease; /* Suaviza a animação */
     width: 100px; /* Ajuste a largura da imagem do lanche */
     height: auto; /* Manter a proporção da imagem */
     border-radius: 5px; /* Borda arredondada para a imagem */
