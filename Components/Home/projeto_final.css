@@ -11,6 +11,7 @@ body {
 }
 
 .container-banner {
+    margin-top: 70px; /* Garante que o banner comece abaixo do header */
     position: relative;
     width: 100%;
     overflow: hidden;
