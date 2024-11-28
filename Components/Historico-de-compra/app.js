@@ -1,21 +1,43 @@
+function carregarDadosUsuario() {
+    // Recupera os dados do localStorage
+    const nomeUsuario = localStorage.getItem('userName');
+    const email = localStorage.getItem('userEmail');
+
+    // Verifica se os dados existem no localStorage
+    if (nomeUsuario && email) {
+        // Atualiza os elementos com os dados
+        document.getElementById('userName').innerText = nomeUsuario;
+        document.getElementById('userEmail').innerText = email;
+    } else {
+        // Se não houver dados no localStorage, exibe uma mensagem de erro
+        console.log('Usuário não encontrado no localStorage.');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Carregar o header
     fetch('/Components/Header/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
 
-                    // Adiciona a funcionalidade de busca ao carregar o header
-                    const script = document.createElement('script');
-                    script.src = '/Components/Header/search.js';
-                    document.body.appendChild(script);
-                });
+            // Adiciona a funcionalidade de busca ao carregar o header
+            const script = document.createElement('script');
+            script.src = '/Components/Header/search.js';
+            document.body.appendChild(script);
 
+            // Chama a função carregarDadosUsuario() após carregar o header
+            carregarDadosUsuario();
+        });
+
+    // Carregar o footer
     fetch('../Footer/Footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer-placeholder').innerHTML = data;
         });
-        
+
+    // Carregar o botão flutuante
     fetch('../botão-flutuante/botao.html')
         .then(response => response.text())
         .then(data => {

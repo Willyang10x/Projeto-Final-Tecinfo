@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png"> 
+    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png">
     <link rel="stylesheet" href="header.css">
     <title>Header</title>
 </head>
@@ -25,16 +25,22 @@
             <button id="search-button">🔍</button>
         </div>
 
-        <!-- Área do Usuário com Menu Suspenso -->
-        <div class="user-area">
-            <img src="/assets/icons/User.png" alt="Usuário" class="user-icon">
-            <div class="user-menu">
-                <a href="#" id="logout">Sair</a>
-        </div>
+        <!-- Área do Usuário -->
+        <div class="profile-container">
+            <!-- Imagem do Usuário -->
+            <img src="/assets/icons/User.png" alt="Usuário" class="imagem-usuario">
+
+            <!-- Menu Suspenso -->
+            <div class="menu-suspenso">
+                <ul>
+                    <li>Usuário: <span id="userName"></span></li>
+                    <li>Email: <span id="userEmail"></span></li>
+                    <li><a href="#" class="sair-botao" id="logout">Sair</a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
     <script src="search.js"></script>
-    <script src="header.js"></script>
 </body>
 </html>

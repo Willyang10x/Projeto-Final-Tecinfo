@@ -39,27 +39,41 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     try {
         const response = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
-
-        const data = await response.json();
-
+    
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            throw new Error('Resposta do servidor não é um JSON válido.');
+        }
+    
         if (response.ok) {
             showPopup('Login realizado com sucesso!', 'success');
+            
+            // Salva informações no localStorage
             localStorage.setItem('token', data.token);
+            if (data.user) { // Verifica se o backend retornou o usuário
+                localStorage.setItem('userName', data.user.name || '');
+                localStorage.setItem('userEmail', data.user.email || '');
+            }
+    
+            // Redireciona para a página inicial após um breve atraso
             setTimeout(() => {
-                window.location.href = '../Home/index.html';
-            }, 1000); // Redireciona após um breve atraso
+                window.location.href = '../Home/index.html';  // Certifique-se de que o caminho está correto
+            }, 1000);
         } else {
-            showPopup(`Erro no login: ${data.message}`, 'error');
+            // Exibe mensagem de erro do backend ou mensagem genérica
+            const errorMessage = data.message || 'Erro desconhecido.';
+            showPopup(`Erro no login: ${errorMessage}`, 'error');
         }
     } catch (error) {
         console.error('Erro ao tentar fazer login:', error);
-        showPopup('Erro ao tentar fazer login.', 'error');
+        showPopup('Erro ao tentar fazer login. Verifique sua conexão.', 'error');
     }
+    
 });
 
 // Função para mostrar ou ocultar a senha e alternar a imagem

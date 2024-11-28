@@ -1,3 +1,35 @@
+// Função para carregar os dados do usuário logado
+function carregarDadosUsuario() {
+    // Recupera os dados do localStorage
+    const nomeUsuario = localStorage.getItem('userName');
+    const email = localStorage.getItem('userEmail');
+
+    // Verifica se os dados existem no localStorage
+    if (nomeUsuario && email) {
+        // Atualiza os elementos com os dados
+        document.getElementById('userName').innerText = nomeUsuario;
+        document.getElementById('userEmail').innerText = email;
+    } else {
+        // Se não houver dados no localStorage, exibe uma mensagem de erro
+        console.log('Usuário não encontrado no localStorage.');
+    }
+}
+
+// Função para fazer logout
+document.getElementById('logout').addEventListener('click', (event) => {
+    event.preventDefault();
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+
+    // Redireciona para a tela de login após logout
+    window.location.href = '/Components/Tela de Login/login.html?status=logout_sucesso';
+});
+
+// Chama a função para carregar os dados ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarDadosUsuario);
+
+// Pesquisa de Lanches
 document.getElementById('search-button').addEventListener('click', () => {
     const searchTerm = document.getElementById('search-input').value;
     if (searchTerm) {
@@ -5,6 +37,42 @@ document.getElementById('search-button').addEventListener('click', () => {
         window.location.href = `/Components/pagina-de-categoria/pagina-de-categoria.html?search=${encodeURIComponent(searchTerm)}`;
     }
 });
+
+// Verifica o token ao carregar a página
+window.addEventListener('load', () => {
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+        showErrorPopup("Token expirado. Por favor, faça login novamente.", () => {
+            window.location.href = '/Components/Tela de Login/login.html';
+        });
+    } else {
+        carregarDadosUsuario(); // Carrega os dados do usuário se o token estiver presente
+    }
+});
+
+// Função para exibir o pop-up de erro
+function showErrorPopup(message, callback) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-message', 'popup-error');
+    popup.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('popup-show');
+    }, 100);
+
+    setTimeout(() => {
+        popup.classList.remove('popup-show');
+        setTimeout(() => {
+            popup.remove();
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }, 400);
+    }, 3000);
+}
 
 
 // Função que faz a busca dos lanches no servidor
@@ -39,70 +107,3 @@ function fetchLanches(searchTerm) {
             console.error('Erro ao buscar os lanches:', error);
         });
 }
-
-document.addEventListener('mousemove', (event) => {
-    // Cria um novo ponto para cada movimento do mouse
-    const dot = document.createElement('div');
-    dot.classList.add('cursor-dot');
-    
-    // Define a posição do ponto com base nas coordenadas do mouse
-    dot.style.left = `${event.pageX}px`;
-    dot.style.top = `${event.pageY}px`;
-
-    // Adiciona o ponto ao body
-    document.body.appendChild(dot);
-    
-    // Remove o ponto após um tempo para criar o efeito de cauda
-    setTimeout(() => {
-        dot.remove();
-    }, 500); // O tempo deve coincidir com o tempo da animação em CSS
-});
-
-document.getElementById('logout').addEventListener('click', (event) => {
-    event.preventDefault();
-    localStorage.removeItem('token');
-
-    // Redireciona para a página de login com um parâmetro para mensagem de logout bem-sucedido
-    if (!localStorage.getItem('token')) {
-        window.location.href = '/Components/Tela de Login/login.html?status=logout_sucesso';
-    } else {
-        alert("Erro ao desconectar.");
-    }
-});
-
-// Verificação do token ao carregar a página
-window.addEventListener('load', () => {
-    const token = localStorage.getItem('token');
-    
-    // Se o token não estiver presente, exibe o pop-up de erro e redireciona para a página de login
-    if (!token) {
-        showErrorPopup("Token expirado. Por favor, faça login novamente.", () => {
-            window.location.href = '/Components/Tela de Login/login.html';
-        });
-    }
-});
-
-// Função para exibir o pop-up de erro
-function showErrorPopup(message, callback) {
-    const popup = document.createElement('div');
-    popup.classList.add('popup-message', 'popup-error');
-    popup.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-
-    document.body.appendChild(popup);
-
-    setTimeout(() => {
-        popup.classList.add('popup-show');
-    }, 100);
-
-    setTimeout(() => {
-        popup.classList.remove('popup-show');
-        setTimeout(() => {
-            popup.remove();
-            if (typeof callback === 'function') {
-                callback();
-            }
-        }, 400);
-    }, 3000);
-}
-
-
