@@ -6,14 +6,19 @@ function carregarDadosUsuario() {
 
     // Verifica se os dados existem no localStorage
     if (nomeUsuario && email) {
+        // Pega o primeiro e o segundo nome do usuário (considera que o nome é separado por espaços)
+        const nomes = nomeUsuario.split(' ');
+        const primeiroESegundoNome = nomes.length > 1 ? nomes[0] + ' ' + nomes[1] : nomes[0];
+
         // Atualiza os elementos com os dados
-        document.getElementById('userName').innerText = nomeUsuario;
+        document.getElementById('userName').innerText = primeiroESegundoNome;
         document.getElementById('userEmail').innerText = email;
     } else {
         // Se não houver dados no localStorage, exibe uma mensagem de erro
         console.log('Usuário não encontrado no localStorage.');
     }
 }
+
 
 // Função para fazer logout
 document.getElementById('logout').addEventListener('click', (event) => {
