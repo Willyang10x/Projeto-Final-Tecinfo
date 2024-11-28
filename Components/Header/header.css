@@ -1,38 +1,48 @@
-/* Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo do Header */
 header {
     background: linear-gradient(45deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Garantir que o header ocupe toda a largura */
+    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: fixed; /* O header ficará fixo no topo */
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 1000;
-    height: 70px; /* Defina uma altura fixa para o header */
+    height: 70px;
 }
 
-/* Logo */
+
 .logo img {
-    height: 60px;
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Navegação */
+.logo img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+
+
 #nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
-    margin-right: 20px; /* Ajuste para espaçamento interno */
+    gap: 40px;
+    margin-left: 240px; 
 }
 
 #nav-links li {
@@ -140,20 +150,57 @@ header {
 
 /* Menu Suspenso */
 .menu-suspenso {
-    margin-top: 8px;
+    margin-top: 6px;
     display: none;
     position: absolute;
     top: 100%;
-    left: -180px; /* Ajuste para mover o menu mais à esquerda */
+    left: -150px; /* Mantém o menu mais à esquerda */
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     overflow: hidden;
-    width: 250px;
+    width: 200px; /* Reduz a largura */
     z-index: 1000;
-    padding: 20px; /* Espaçamento interno */
+    padding: 15px; /* Reduz o espaçamento interno */
     text-align: center; /* Centraliza os textos e o botão */
+    animation: flutuar 3s ease-in-out infinite;
 }
+
+/* Menu Suspenso */
+.menu-suspenso {
+    margin-top: 6px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -150px; /* Ajustado para manter a centralização */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 200px;
+    z-index: 1000;
+    padding: 15px;
+    text-align: center;
+    animation: emerge 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Animação inovadora */
+}
+
+
+/* Animação Emergente */
+@keyframes emerge {
+    0% {
+        transform: scaleY(0.2) scaleX(0.8) rotateX(-90deg); /* Menu comprimido e deitado */
+        opacity: 0; /* Invisível */
+    }
+    50% {
+        transform: scaleY(1.1) scaleX(1.05) rotateX(-15deg); /* Expande rapidamente com leve rotação */
+        opacity: 0.8; /* Fica quase visível */
+    }
+    100% {
+        transform: scaleY(1) scaleX(1) rotateX(0deg); /* Normaliza */
+        opacity: 1; /* Totalmente visível */
+    }
+}
+
 
 .profile-container:hover .menu-suspenso {
     display: block;
@@ -162,7 +209,7 @@ header {
 
 .menu-suspenso ul {
     list-style: none;
-    margin-bottom: 20px; /* Espaço entre os itens da lista e o botão */
+    margin-bottom: 25px; /* Espaço entre os itens da lista e o botão */
     padding: 0;
 }
 
@@ -176,11 +223,13 @@ header {
     font-size: 16px;
     color: #82638f;
     font-weight: normal;
+    margin-top: 8px;
     margin-bottom: 5px; /* Espaço final antes do botão */
 }
 
 /* Botão de Sair */
 .sair-botao {
+    margin-top: 2px;
     font-size: 16px;
     font-weight: bold;
     background-color: #4B0082;
@@ -194,8 +243,8 @@ header {
 }
 
 .sair-botao:hover {
-    background-color: #82638f;
-    transform: translateY(-2px);
+    background-color: #7706a7;
+    transform: translateY(2px);
 }
 
 
