@@ -1,4 +1,3 @@
-
 // Função para adicionar o evento de blur para cada campo
 function addBlurEventToField(fieldId, validationFunction, errorMessageId, errorMessage) {
     const field = document.getElementById(fieldId);
@@ -83,7 +82,6 @@ function showPopup(message, isSuccess) {
 }
 
 // Evento de submit para validar todos os campos
-
 document.getElementById('registerForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -91,7 +89,6 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-
 
     let hasError = false;
 
@@ -215,33 +212,3 @@ document.addEventListener('mousemove', (event) => {
         dot.remove();
     }, 500); // O tempo deve coincidir com o tempo da animação em CSS
 });
-
-    // Validação de senha
-    if (password !== confirmPassword) {
-        alert('As senhas não coincidem!');
-        return;
-    }
-
-    try {
-        const response = await fetch('http://localhost:3000/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, email, password })
-        });
-
-        const data = await response.json();
-        
-        if (response.ok) {
-            alert('Cadastro realizado com sucesso!');
-            window.location.href = 'login.html';
-        } else {
-            alert('Erro no cadastro: ' + data.message);
-        }
-    } catch (error) {
-        console.error('Erro ao tentar fazer o cadastro:', error);
-        alert('Erro ao tentar fazer o cadastro.');
-    }
-});
-
