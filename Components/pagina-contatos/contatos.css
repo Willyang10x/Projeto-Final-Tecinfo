@@ -1,19 +1,76 @@
 @import url(../Header/header.css);
 @import url(../Footer/Footer.css);
 
+.popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.popup-show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.popup-error {
+    background: linear-gradient(135deg, rgba(238, 20, 20, 0.9), rgba(238, 64, 20, 0.9));
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popup-error i {
+    font-size: 20px;
+}
+
+#success-message {
+    display: none; /* Começa escondida */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(-20px); /* Inicia ligeiramente fora da tela */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transição suave */
+    z-index: 1000; /* Para que fique acima de outros elementos */
+}
+
+/* Animação para exibir a mensagem */
+#success-message.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Volta ao local original */
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #E3E7FF; /* Alterado para um azul mais claro */
+    background-color: #C8D7FF; /* Alterado para um azul mais claro */
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 #button-back {
+    margin-top: 70px;
     position: fixed;
     height: 60px;
-    display: flex; /* Flexbox para centralizar o conteúdo */
-    align-items: center; /* Alinhamento vertical */
+    text-align: left;
     padding-left: 20px;
 }
 
@@ -28,37 +85,125 @@ body {
 }
 
 h1 {
-    margin-top: 3px;
+    margin-top: 70px;
     text-align: center;
     color: #4B0082;
     margin-bottom: 60px; /* Adicionado espaço abaixo do título */
 }
 
+/* Seção de informações de contato */
 .contact-info {
-    text-align: center; /* Centraliza o conteúdo dentro do container */
+    display: flex;
+    flex-direction: column; /* Organiza as caixas verticalmente */
+    align-items: center; /* Alinha as caixas horizontalmente */
+    gap: 20px; /* Espaçamento entre as caixas */
+    animation: fadeInLeftRight 1s ease-out; /* Animação de entrada com movimento lateral */
     margin-bottom: 40px;
 }
 
+/* Estilos para os blocos de informações de contato */
 .contact-info div {
     background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Diminui o padding para reduzir o tamanho */
+    border-radius: 15px; /* Bordas arredondadas mais suaves */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
     text-align: center;
-    width: 100%; /* Ocupa a largura total do container */
-    max-width: 600px; /* Define uma largura máxima para centralizar */
-    margin: 0 auto 20px; /* Centraliza e adiciona espaço abaixo */
-    transition: transform 0.3s;
+    width: 100%; /* Ajustado para preencher toda a largura disponível */
+    max-width: 600px; /* Largura máxima reduzida */
+    min-width: 280px; /* Largura mínima ajustada */
+    margin: 0; /* Removido o espaçamento extra entre as caixas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Garante que os efeitos não saiam da área */
+    transform: scale(1);
 }
 
+/* Efeito de hover para criar interação dinâmica */
 .contact-info div:hover {
-    transform: translateY(-5px); /* Leve elevação ao passar o mouse */
+    transform: scale(1.05); /* Apenas aumento de escala */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+    background-color: #f5f5f5; /* Mudança de cor suave no fundo */
+    cursor: pointer;
 }
 
+/* Efeito de animação lateral (entrando de um lado para o outro) */
+@keyframes fadeInLeftRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Estilo para o título (h3) */
 .contact-info div h3 {
     margin-bottom: 15px;
     color: #4B0082;
+    font-family: 'Poppins', sans-serif; /* Fonte moderna e elegante */
+    font-size: 1.6em; /* Tamanho maior para maior impacto */
+    font-weight: 600;
+    text-transform: uppercase; /* Títulos maiúsculos */
+    letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+    position: relative;
 }
+
+/* Efeito de sublinhado animado no título */
+.contact-info div h3::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4B0082;
+    transition: width 0.3s ease;
+}
+
+.contact-info div h3:hover::before {
+    width: 100%; /* Sublinha o título ao passar o mouse */
+}
+
+/* Efeito de ícones ou textos dentro do bloco */
+.contact-info div p {
+    font-size: 1em;
+    color: #333333;
+    font-family: 'Arial', sans-serif;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.contact-info div:hover p {
+    color: #4B0082; /* Altera a cor do texto quando o bloco é hover */
+}
+
+/* Animação para o texto no carregamento */
+@keyframes textPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Aplicando a animação no texto */
+.contact-info div p {
+    animation: textPop 0.8s ease-out;
+}
+
 
 #form-contato {
     max-width: 600px;
@@ -99,4 +244,29 @@ button {
 
 button:hover {
     background-color: #800080;
+}
+
+.cursor-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(133, 34, 212, 1); /* Cor inicial do gradiente */
+    pointer-events: none;
+    animation: fadeOut 0.5s ease-out forwards;
+    transition: transform 0.3s ease;
+}
+
+/* Animação de desaparecimento */
+@keyframes fadeOut {
+    0% {
+        transform: scale(1);
+        background-color: rgba(80, 12, 134, 1); /* Cor final do gradiente */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5);
+        background-color: rgba(133, 34, 212, 0); /* Cor final transparente */
+        opacity: 0;
+    }
 }

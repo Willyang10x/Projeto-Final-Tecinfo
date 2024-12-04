@@ -19,6 +19,36 @@
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
 
+            <div id="email-error" class="error-message"></div> <!-- Mensagem de erro para o email -->
+        
+            <label for="password">Senha</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                <img src="/assets/icons/Exibir-senha.png" alt="Mostrar senha" class="toggle-password" onclick="togglePassword('password')">
+            </div>
+            <a href="forgot-password.html" class="forgot-password">Esqueci minha senha</a>
+            
+            <div id="password-error" class="error-message"></div> <!-- Mensagem de erro para a senha -->
+        
+            <button type="submit">Entrar</button>
+            
+            <div id="form-error" class="error-message"></div>
+        </form>
+        
+        
+        <p class="register-text">Não tem uma conta? <a href="/Components/Tela de Cadastro/cadastro.html">Cadastre-se</a></p>
+    </div>
+
+    <!-- Pop-up de sucesso -->
+    <div id="popup-login-success" class="popup-message popup-success">
+        <i class="fa fa-check-circle"></i> <span>Login realizado com sucesso!</span>
+    </div>
+    
+    <!-- Pop-up de erro -->
+    <div id="popup-login-error" class="popup-message popup-error">
+        <i class="fa fa-exclamation-circle"></i> <span>Erro no login: Dados incorretos!</span>
+
+
             <label for="password">Senha</label>
             <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
 
@@ -28,8 +58,11 @@
         </form>
         
         <p class="register-text">Não tem uma conta? <a href="../Tela de Cadastro/cadastro.html">Cadastre-se</a></p>
+
     </div>
 
     <script src="app.js"></script>
 </body>
+</html>
+
 </html>

@@ -1,120 +1,320 @@
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 header {
-    background: linear-gradient(90deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
-    padding: 5px 0;
-    justify-content: space-evenly;
-    gap: 300px;
+    background: linear-gradient(45deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
+    padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
 }
 
+
 .logo img {
-    height: 60px;
-    padding-left: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.logo img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+
 
 #nav-links {
     list-style: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 40px;
+    margin-left: 240px; 
 }
 
 #nav-links li {
-    margin: 0 20px;
+    transition: transform 0.3s ease;
+}
+
+#nav-links li:hover {
+    transform: translateY(-5px);
 }
 
 #nav-links a {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
+    font-weight: 500;
+    position: relative;
 }
 
+#nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+#nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Barra de Pesquisa */
 .barra-de-pesquisa {
     display: flex;
     align-items: center;
 }
 
 .barra-de-pesquisa input {
-    padding: 0.5rem;
+    padding: 0.7rem;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 30px 0 0 30px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.barra-de-pesquisa input:focus {
+    outline: none;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(133, 34, 212, 0.6);
 }
 
 .barra-de-pesquisa button {
-    padding: 0.5rem;
+    padding: 0.7rem;
     border: none;
-    background: linear-gradient(90deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
+    background: linear-gradient(45deg, rgba(80, 12, 134, 1) 0%, rgba(133, 34, 212, 1) 100%);
     color: #ffffff;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 30px 30px 0;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Oculta por padrão */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Coloca o overlay acima de outros elementos */
+.barra-de-pesquisa button:hover {
+    background: linear-gradient(45deg, rgba(133, 34, 212, 1) 0%, rgba(80, 12, 134, 1) 100%);
 }
 
-#resultados {
-    background-color: white; /* Fundo branco para resultados */
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 90%;
-    overflow-y: auto; /* Scroll se necessário */
+/* Estilos da Área do Usuário */
+.profile-container {
+    position: relative;
     display: flex;
-    flex-wrap: wrap; /* Permite que os resultados fiquem lado a lado */
-    justify-content: space-around;
-}
-
-#resultados div {
-    background-color: #F0EFFF;
-    border: 2px solid #800080;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 20px;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
-#resultados div:hover {
+.profile-container:hover {
     transform: scale(1.05);
 }
 
-#resultados h3 {
+.imagem-usuario {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.imagem-usuario:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Estilo para o nome de usuário e email */
+.profile-container span {
     color: #4B0082;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+/* Menu Suspenso */
+.menu-suspenso {
+    margin-top: 6px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -170px; /* Mantém o menu mais à esquerda */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 220px; /* Reduz a largura */
+    z-index: 1001; /* Garante que o menu fique acima de outros elementos */
+    padding: 15px; /* Reduz o espaçamento interno */
+    text-align: center; /* Centraliza os textos e o botão */
+    word-wrap: break-word; /* Quebra o texto longo */
+    animation: emerge 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    white-space: normal; /* Permite quebra de linha */
 }
 
-#resultados p {
-    color: rgb(0, 0, 0);
-    margin: 10px 0;
-}
-
-#resultados img {
+/* Efeito de linha contornando */
+.menu-suspenso:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    border: 3px solid rgba(128, 0, 128, 0.8); /* Cor da cobrinha */
+    border-radius: 8px; /* Mesma borda do menu */
+    box-sizing: border-box; /* Inclui borda no tamanho */
+    animation: contornar-suave 4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; /* Animação suave e contínua */
 }
 
-/* Media Query para ajustar o tamanho do resultado em telas menores */
-@media (max-width: 600px) {
-    #resultados div {
-        width: 90%;
-        max-width: 180px;
+/* Animação de Cobrinha Contornando */
+@keyframes contornar-suave {
+    0% {
+        clip-path: inset(0% 100% 100% 0%); /* Começa no topo à esquerda */
+    }
+    25% {
+        clip-path: inset(0% 0% 100% 0%); /* Move ao longo do topo */
+    }
+    50% {
+        clip-path: inset(0% 0% 0% 0%); /* Desce pelo lado direito */
+    }
+    75% {
+        clip-path: inset(100% 0% 0% 0%); /* Move para a base */
+    }
+    100% {
+        clip-path: inset(100% 100% 0% 0%); /* Volta ao ponto inicial */
     }
 }
+
+
+/* Animação Emergente */
+@keyframes emerge {
+    0% {
+        transform: scaleY(0.2) scaleX(0.8) rotateX(-90deg); /* Menu comprimido e deitado */
+        opacity: 0; /* Invisível */
+    }
+    50% {
+        transform: scaleY(1.1) scaleX(1.05) rotateX(-15deg); /* Expande rapidamente com leve rotação */
+        opacity: 0.8; /* Fica quase visível */
+    }
+    100% {
+        transform: scaleY(1) scaleX(1) rotateX(0deg); /* Normaliza */
+        opacity: 1; /* Totalmente visível */
+    }
+}
+
+.profile-container:hover .menu-suspenso {
+    display: block;
+}
+
+.menu-suspenso ul {
+    list-style: none;
+    margin-bottom: 25px; /* Espaço entre os itens da lista e o botão */
+    padding: 0;
+}
+
+.menu-suspenso ul li h2 {
+    font-size: 22px;
+    color: #4B0082;
+    margin-bottom: 5px; /* Espaço entre nome e e-mail */
+}
+
+.menu-suspenso ul li h4 {
+    font-size: 12px;
+    color: #82638f;
+    font-weight: normal;
+    margin-top: 8px;
+    margin-bottom: 5px; /* Espaço final antes do botão */
+    word-wrap: break-word; /* Quebra o e-mail longo */
+}
+
+/* Media Query para telas menores */
+@media (max-width: 768px) {
+    .menu-suspenso {
+        left: -120px; /* Ajusta a posição para dispositivos menores */
+        width: 180px; /* Ajusta a largura */
+        padding: 12px; /* Ajusta o espaçamento interno */
+    }
+
+    .menu-suspenso ul li h2 {
+        font-size: 20px; /* Reduz o tamanho da fonte no nome */
+    }
+
+    .menu-suspenso ul li h4 {
+        font-size: 12px; /* Reduz o tamanho da fonte no e-mail */
+    }
+}
+
+/* Media Query para telas muito pequenas (mobile) */
+@media (max-width: 480px) {
+    .menu-suspenso {
+        left: -100px; /* Ajusta a posição para telas muito pequenas */
+        width: 150px; /* Ajusta a largura */
+        padding: 10px; /* Ajusta o espaçamento interno */
+    }
+
+    .menu-suspenso ul li h2 {
+        font-size: 18px; /* Reduz ainda mais o tamanho do nome */
+    }
+
+    .menu-suspenso ul li h4 {
+        font-size: 12px; /* Reduz o tamanho do e-mail */
+    }
+}
+
+
+/* Botão de Sair */
+.sair-botao {
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4B0082;
+    color: #fff;
+    border: solid 2px #4B0082;
+    border-radius: 5px; 
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Garante que o botão se comporte bem em qualquer contexto */
+}
+
+.sair-botao:hover {
+    background-color: #7706a7;
+    transform: translateY(2px);
+}
+
+
+/* Media Query para Responsividade */
+@media (max-width: 600px) {
+    #nav-links li {
+        font-size: 16px;
+    }
+
+    .barra-de-pesquisa input {
+        width: 100px; /* Ajuste para telas menores */
+    }
+
+    .imagem-usuario {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+body {
+    padding-top: 70px; /* Ajustado para corresponder à altura do header */
+}
+

@@ -1,6 +1,8 @@
 @import url(../Header/header.css);
 @import url(../Footer/Footer.css);
 @import url(../botão-flutuante/botao.css);
+
+
 *{
     margin: 0;
     padding: 0;
@@ -12,12 +14,45 @@ body {
     background-color: #C8D7FF;
 }
 
+.popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.popup-show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.popup-error {
+    background: linear-gradient(135deg, rgba(238, 20, 20, 0.9), rgba(238, 64, 20, 0.9));
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popup-error i {
+    font-size: 20px;
+}
+
+
 #button-back{
+    position: fixed;
     height: 60px;
     text-align: left;
-    padding-left: 20px;
-    
-   
+    padding-left: 20px;  
 }
 
 .products {
@@ -44,26 +79,30 @@ body {
 }
 
 .separetor {
+    margin-top: 15px;
     border: solid 2px rgb(117, 1, 250);
     max-width: 1000px;
-    margin: auto;
+    margin: 15px auto;
 }
 
 .product {
-    flex: 0 1 calc(25% - 20px); /* Mantenha 25% da largura disponível, menos a margem */
-    min-width: 200px;          /* Adiciona uma largura mínima para os produtos */
-    max-width: 250px;          /* Adiciona uma largura máxima para evitar que os produtos fiquem muito grandes */
-    box-sizing: border-box;    
-    background-color: #C8D7FF; 
-    border: 2px solid #800080;  
-    border-radius: 10px;        
-    padding: 20px;              
-    text-align: center;         
+    background-color: #C8D7FF;
+    border: 2px solid #800080;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px; /* Mantenha ou ajuste conforme necessário */
+    text-align: center;
+    position: relative; /* Para o posicionamento absoluto do botão */
+    height: 350px; /* Define uma altura fixa para que o botão fique na parte inferior */
 }
 
 .product img {
     width: 100%;
     border-radius: 10px;
+}
+
+.product .product-content {
+    margin-bottom: 50px; /* Espaço reservado para o botão */
 }
 
 .product p {
@@ -72,20 +111,23 @@ body {
 
 .product button {
     font-size: medium;
-    background-color: #C8D7FF;
-    color: #4B0082;
+    background-color: #5d049c;
+    color: #ffffff;
     border: solid 2px #4B0082;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    position: absolute;
+    bottom: 20px; /* Alinha o botão ao fundo, ajustando conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .product button:hover {
-    background-color: #4B0082;
+    background-color: #7a15c2;
     color: #C8D7FF;
 }
 
-/* Restante do seu CSS */
 
 #produtos {
     margin-top: 40px;
@@ -105,4 +147,29 @@ body {
     border-radius: 10px;        
     padding: 20px;              
     text-align: center;         
+}
+
+.cursor-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(133, 34, 212, 1); /* Cor inicial do gradiente */
+    pointer-events: none;
+    animation: fadeOut 0.5s ease-out forwards;
+    transition: transform 0.3s ease;
+}
+
+/* Animação de desaparecimento */
+@keyframes fadeOut {
+    0% {
+        transform: scale(1);
+        background-color: rgba(80, 12, 134, 1); /* Cor final do gradiente */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5);
+        background-color: rgba(133, 34, 212, 0); /* Cor final transparente */
+        opacity: 0;
+    }
 }

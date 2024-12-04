@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png"> 
+    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png">
     <link rel="stylesheet" href="header.css">
     <title>Header</title>
 </head>
@@ -16,12 +16,29 @@
             <li><a href="/Components/Home/index.html">Home</a></li>
             <li><a href="/Components/pagina-sobre/sobre.html">Sobre</a></li>
             <li><a href="/Components/pagina-contatos/contatos.html">Contatos</a></li>
-            <li><a href="/Components/Historico-de-compra/Historico.html">Historico</a></li>
+            <li><a href="/Components/Historico-de-compra/Historico.html">Histórico</a></li>
         </nav>
 
+        <!-- Barra de Pesquisa -->
         <div class="barra-de-pesquisa">
             <input type="text" id="search-input" placeholder="Search..." />
             <button id="search-button">🔍</button>
+        </div>
+
+        <!-- Área do Usuário -->
+        <div class="profile-container">
+            <!-- Imagem do Usuário -->
+            <img src="/assets/icons/User.png" alt="Usuário" class="imagem-usuario">
+
+            <!-- Menu Suspenso -->
+            <div class="menu-suspenso">
+                <ul>
+                    <li><h2 id="userName"></h2></li>
+                    <li><h4 id="userEmail"></h4></li>
+                </ul>
+                <a  class="sair-botao" id="logout">Sair</a>
+            </div>
+            
         </div>
     </header>
 
