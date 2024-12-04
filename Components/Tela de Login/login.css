@@ -3,10 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
     overflow-x: hidden;
    
 }
 
+}
+
+/* Estilos Gerais */
 body {
     font-family: 'Poppins', sans-serif;
     background: #C8D7FF;
@@ -110,6 +114,7 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
     animation: fadeIn 0.8s ease;
+    position: relative;
     overflow: hidden;
 }
 
@@ -207,6 +212,7 @@ input:focus {
     display: block;
     margin-top: -10px;
     margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: right;
     color: #8A2BE2;
     font-size: 0.9rem;
@@ -312,3 +318,4 @@ button:active {
         opacity: 0;
     }
 }
+

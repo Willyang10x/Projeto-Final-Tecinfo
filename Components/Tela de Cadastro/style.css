@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
     overflow-x: hidden;
     
 }
@@ -83,6 +84,8 @@
     border-color: transparent rgba(29, 151, 108, 0.9) transparent transparent;
 }
 
+
+}
 
 /* Estilos Gerais */
 body {
@@ -177,6 +180,7 @@ input:focus {
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
 }
 
+
 /* Wrapper para o campo de senha com botão de mostrar/ocultar */
 .password-wrapper {
     position: relative;
@@ -201,6 +205,9 @@ input:focus {
 /* Botão de Cadastro */
 button {
     margin-top: 15px;
+
+/* Botão de Cadastro */
+button {
     width: 100%;
     padding: 12px;
     background-color: #8A2BE2;
@@ -240,6 +247,7 @@ button:active {
     color: #4B0082;
     text-decoration: underline;
 }
+
 
 .email-autocomplete-container {
     position: relative;

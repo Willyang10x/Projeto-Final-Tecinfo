@@ -18,6 +18,7 @@
         <form id="loginForm">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
             <div id="email-error" class="error-message"></div> <!-- Mensagem de erro para o email -->
         
             <label for="password">Senha</label>
@@ -46,9 +47,22 @@
     <!-- Pop-up de erro -->
     <div id="popup-login-error" class="popup-message popup-error">
         <i class="fa fa-exclamation-circle"></i> <span>Erro no login: Dados incorretos!</span>
+
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+            <a href="forgot-password.html" class="forgot-password">Esqueci minha senha</a>
+
+            <button type="submit">Entrar</button>
+        </form>
+        
+        <p class="register-text">Não tem uma conta? <a href="../Tela de Cadastro/cadastro.html">Cadastre-se</a></p>
+
     </div>
 
     <script src="app.js"></script>
 </body>
 </html>
 
+</html>
